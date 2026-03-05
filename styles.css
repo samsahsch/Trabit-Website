@@ -66,6 +66,15 @@ img {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
 }
 
 .nav-links a {
@@ -82,6 +91,14 @@ img {
 .hero {
     text-align: center;
     padding: 100px 0 80px;
+}
+
+.hero-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 28px;
+    margin: 0 auto 32px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
 .hero h1 {
