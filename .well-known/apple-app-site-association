@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [ "YOUR_TEAM_ID.com.yourname.Trabit" ],
+        "components": [ { "/": "/*" } ]
+      }
+    ]
+  }
+}
