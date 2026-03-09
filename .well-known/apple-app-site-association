@@ -1,10 +1,33 @@
 {
-  "applinks": {
-    "details": [
-      {
-        "appIDs": [ "YOUR_TEAM_ID.com.yourname.Trabit" ],
-        "components": [ { "/": "/*" } ]
-      }
-    ]
-  }
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appIDs": [
+                    "W9QF9CX2JA.com.samuel.Trabit"
+                ],
+                "paths": [
+                    "/add",
+                    "/add/*",
+                    "/profile",
+                    "/profile/*",
+                    "/goals",
+                    "/goals/*",
+                    "/progress",
+                    "/progress/*",
+                    "/friends",
+                    "/friends/*",
+                    "/today",
+                    "/today/*",
+                    "/stats",
+                    "/stats/*"
+                ]
+            }
+        ]
+    },
+    "webcredentials": {
+        "apps": [
+            "W9QF9CX2JA.com.samuel.Trabit"
+        ]
+    }
 }

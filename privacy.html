@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy — Trabit</title>
     <meta name="description" content="Trabit Privacy Policy. Learn how your data is handled — locally, privately, and securely.">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <nav class="nav">
         <div class="container">
-            <a href="index.html" class="nav-brand"><img src="images/Trabit_App_Icon.png" alt="Trabit" class="nav-logo">Trabit</a>
+            <a href="index.html" class="nav-brand">
+                <img src="logos/Trabit_App_Icon.jpg" alt="Trabit" class="nav-logo">
+                Trabit
+            </a>
             <div class="nav-links">
                 <a href="privacy.html">Privacy</a>
                 <a href="support.html">Support</a>
@@ -25,15 +28,25 @@
     <main class="page-content">
         <div class="container">
             <h1>Privacy Policy</h1>
-            <p class="subtitle"><strong>Last Updated:</strong> March 4, 2026</p>
+            <p class="subtitle"><strong>Last Updated:</strong> March 9, 2026</p>
 
             <p>Trabit ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how your data is handled when you use the Trabit application.</p>
 
-            <h2>1. Data Storage and Syncing</h2>
-            <p>Trabit is designed with privacy as its core foundation. All of your habit tracking data, goals, and logs are stored locally on your device using Apple's native SwiftData framework. If you have iCloud enabled, your data is securely synced across your devices using your personal Apple iCloud account (CloudKit). <strong>We do not own, operate, or maintain any external servers, and we do not have access to your personal data.</strong></p>
+            <h2>1. Data Storage</h2>
+            <p>All of your habit tracking data, goals, and logs are stored locally on your device using Apple's native SwiftData framework. <strong>We do not own, operate, or maintain any external servers, and we do not have access to your personal habit data.</strong></p>
 
-            <h2>2. Apple Health (HealthKit) Integration</h2>
-            <p>Trabit optionally integrates with Apple's Health app (HealthKit) to automatically log your habits (such as sleep, steps, or workout distances). If you explicitly grant Trabit permission to read this data, the following rules apply:</p>
+            <h2>2. Social Features & Shared Data</h2>
+            <p>Trabit offers optional social features that allow you to share goals and track progress with friends. When you opt in to these features, limited data is stored in Apple's CloudKit public database to enable sharing:</p>
+            <ul>
+                <li><strong>What is shared:</strong> Your display name (optional), share code, and any goals you explicitly choose to share — including the goal title, habit name, progress percentage, streak count, and completion status.</li>
+                <li><strong>How it works:</strong> Sharing is powered entirely by Apple's CloudKit infrastructure. We do not operate a separate server.</li>
+                <li><strong>Your control:</strong> You choose which goals to share on a per-goal basis. You can stop sharing any goal at any time. No data is shared unless you explicitly enable it.</li>
+                <li><strong>Friend connections:</strong> Friend links are stored in your private iCloud database and are only visible to you.</li>
+                <li><strong>HealthKit data is never shared:</strong> Your Apple Health data is never included in shared goals, even when social features are enabled.</li>
+            </ul>
+
+            <h2>3. Apple Health (HealthKit) Integration</h2>
+            <p>Trabit optionally integrates with Apple's Health app (HealthKit) to automatically log habits such as steps, distance, and workouts. If you grant permission:</p>
             <ul>
                 <li><strong>Read-Only Access:</strong> Trabit only reads the specific HealthKit data you authorize to calculate your habit progress.</li>
                 <li><strong>No External Transmission:</strong> Your HealthKit data is processed entirely locally on your device. It is never transmitted to us or any third-party servers.</li>
@@ -41,13 +54,16 @@
                 <li><strong>No Data Brokers:</strong> We will never sell, share, or disclose your HealthKit data to data brokers, advertising platforms, or other third parties.</li>
             </ul>
 
-            <h2>3. Analytics and Tracking</h2>
+            <h2>4. Analytics and Tracking</h2>
             <p>Trabit does not include any third-party tracking, analytics, or advertising frameworks. We do not track your behavior across other apps or websites.</p>
 
-            <h2>4. Changes to This Policy</h2>
+            <h2>5. On-Device AI</h2>
+            <p>Trabit uses Apple's on-device AI (FoundationModels framework) to parse natural language input for habit logging. All AI processing happens locally on your device. No input or data is sent to external servers for processing.</p>
+
+            <h2>6. Changes to This Policy</h2>
             <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
 
-            <h2>5. Contact Us</h2>
+            <h2>7. Contact Us</h2>
             <p>If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:support@trabit.app">support@trabit.app</a></p>
 
             <a href="index.html" class="back-link">&larr; Back to Home</a>

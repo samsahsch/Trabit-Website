@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support — Trabit</title>
     <meta name="description" content="Get help with Trabit. Find answers to common questions or contact our support team.">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <nav class="nav">
         <div class="container">
-            <a href="index.html" class="nav-brand"><img src="images/Trabit_App_Icon.png" alt="Trabit" class="nav-logo">Trabit</a>
+            <a href="index.html" class="nav-brand">
+                <img src="logos/Trabit_App_Icon.jpg" alt="Trabit" class="nav-logo">
+                Trabit
+            </a>
             <div class="nav-links">
                 <a href="privacy.html">Privacy</a>
                 <a href="support.html">Support</a>
@@ -40,19 +43,59 @@
                 </div>
             </div>
 
-            <h2>Frequently Asked Questions</h2>
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
 
-            <h3>Where is my data stored?</h3>
-            <p>All data is stored locally on your device. If iCloud is enabled, it syncs securely through your personal iCloud account. We never have access to your data.</p>
+                <details class="faq-item">
+                    <summary>Where is my data stored?</summary>
+                    <p>All habit data is stored locally on your device using Apple's SwiftData framework. We don't have servers and never see your personal data. If you use social features, only the goals you explicitly share are stored in Apple's CloudKit.</p>
+                </details>
 
-            <h3>Does Trabit work offline?</h3>
-            <p>Yes. Trabit works fully offline. iCloud sync happens automatically when a connection is available.</p>
+                <details class="faq-item">
+                    <summary>What platforms does Trabit support?</summary>
+                    <p>Trabit runs on iPhone, iPad, and Apple Watch. It also supports Home Screen and Lock Screen widgets, Live Activities, Siri, and the Action Button on iPhone 15 Pro and later.</p>
+                </details>
 
-            <h3>How does Apple Health integration work?</h3>
-            <p>When you grant permission, Trabit can read data like steps, sleep, and workouts from Apple Health to automatically track your habits. This data never leaves your device.</p>
+                <details class="faq-item">
+                    <summary>How does AI-powered logging work?</summary>
+                    <p>You can type naturally — like "ran 5km in 25 min" or "20 pushups, drank 3L water" — and Trabit automatically parses it and logs it to the right habits. All AI processing happens on-device using Apple Intelligence. No data is sent externally.</p>
+                </details>
 
-            <h3>How do I delete my data?</h3>
-            <p>You can delete individual habits or all data directly within the app. Since no data is stored on our servers, deleting it from your device removes it completely.</p>
+                <details class="faq-item">
+                    <summary>Does Trabit work offline?</summary>
+                    <p>Yes. Trabit works fully offline. All habit tracking, logging, and analytics are available without an internet connection.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>How does Apple Health integration work?</summary>
+                    <p>When you grant permission, Trabit can read data like steps, distance, active energy, and workouts from Apple Health to automatically track your habits. This data is processed locally and never leaves your device.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>How do I connect with friends?</summary>
+                    <p>Each user gets a unique share code (like TRABIT-XXXXXX). You can share it via QR code, link, or by copying it. Friends can see the goals you choose to share — your personal habit data stays private.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>What are shared goals?</summary>
+                    <p>You can share specific goals with friends so they can see your progress. Only the goal title, progress, and streak are visible — never your raw habit logs or health data. You control sharing on a per-goal basis.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Can I export my data?</summary>
+                    <p>Yes. You can export all your habit data as a CSV file from the Goals tab in the app.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>How do I delete my data?</summary>
+                    <p>You can delete individual habits or all data directly within the app. Since no personal data is stored on our servers, deleting it from your device removes it completely.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>How do widgets and Live Activities work?</summary>
+                    <p>Trabit offers 6 widget sizes for your Home Screen and Lock Screen, including interactive widgets that let you complete habits with a tap. Live Activities show your daily progress on the Lock Screen and Dynamic Island throughout the day.</p>
+                </details>
+            </div>
 
             <a href="index.html" class="back-link">&larr; Back to Home</a>
         </div>
