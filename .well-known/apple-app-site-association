@@ -20,7 +20,9 @@
                     "/today",
                     "/today/*",
                     "/stats",
-                    "/stats/*"
+                    "/stats/*",
+                    "/join",
+                    "/join/*"
                 ]
             }
         ]
