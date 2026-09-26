@@ -2,133 +2,406 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trabit — Track Any Habit. Reach Any Goal.</title>
-    <meta name="description" content="Trabit is a privacy-first habit tracker for iOS. AI-powered logging, rich analytics, goals, and social accountability — all with your data under your control.">
-    <link rel="apple-touch-icon" sizes="180x180" href="/logos/apple-touch-icon.png?v=2">
-    <link rel="icon" type="image/png" sizes="32x32" href="/logos/favicon-32x32.png?v=2">
-    <link rel="icon" type="image/png" sizes="16x16" href="/logos/favicon-16x16.png?v=2">
-    <!-- Open Graph -->
-    <meta property="og:title" content="Trabit — Track Any Habit. Reach Any Goal.">
-    <meta property="og:description" content="Trabit is a privacy-first habit tracker for iOS. AI-powered logging, rich analytics, goals, and social accountability — all with your data under your control.">
-    <meta property="og:image" content="https://trabit.app/logos/Trabit_App_Icon.jpg">
-    <meta property="og:url" content="https://trabit.app">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trabit: Track any habit. Reach any goal.</title>
+    <meta name="description" content="Track any habit. Reach any goal. Trabit brings your habits, sleep, food, and training together, with a personal coach that plans around your week. For iPhone, Apple Watch, and iPad.">
+    <meta name="theme-color" content="#F4F7FA" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#05070A" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" sizes="180x180" href="logos/apple-touch-icon.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="logos/favicon-32x32.png?v=3">
+    <link rel="icon" type="image/png" sizes="16x16" href="logos/favicon-16x16.png?v=3">
+    <link rel="canonical" href="https://trabit.app/">
     <meta property="og:type" content="website">
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Trabit — Track Any Habit. Reach Any Goal.">
-    <meta name="twitter:description" content="Trabit is a privacy-first habit tracker for iOS. AI-powered logging, rich analytics, goals, and social accountability — all with your data under your control.">
-    <meta name="twitter:image" content="https://trabit.app/logos/Trabit_App_Icon.jpg">
-    <link rel="stylesheet" href="styles.css">
+    <meta property="og:url" content="https://trabit.app/">
+    <meta property="og:site_name" content="Trabit">
+    <meta property="og:title" content="Trabit: Track any habit. Reach any goal.">
+    <meta property="og:description" content="Habits, sleep, food, and training in one app, with a personal coach that plans around your week.">
+    <meta property="og:image" content="https://trabit.app/img/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Track any habit. Reach any goal. Trabit on iPhone.">
+    <meta name="twitter:card" content="summary_large_image">
+    <script>
+        document.documentElement.classList.add('js');
+        try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    </script>
+    <link rel="preload" as="image" href="img/01-today-660.webp?v=5" imagesrcset="img/01-today-360.webp?v=5 360w, img/01-today-660.webp?v=5 660w" imagesizes="(min-width: 420px) 282px, 68vw" media="(prefers-color-scheme: light)">
+    <link rel="preload" as="image" href="img/01-today-dark-660.webp?v=5" imagesrcset="img/01-today-dark-360.webp?v=5 360w, img/01-today-dark-660.webp?v=5 660w" imagesizes="(min-width: 420px) 282px, 68vw" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="ambient" aria-hidden="true"><div class="grid-lines"></div></div>
 
-    <nav class="nav">
-        <div class="container">
-            <a href="index.html" class="nav-brand">
-                <img src="logos/Trabit_App_Icon.jpg" alt="Trabit" class="nav-logo">
-                Trabit
-            </a>
-            <div class="nav-links">
-                <a href="privacy.html">Privacy</a>
+    <header class="nav">
+        <div class="wrap">
+            <a href="./" class="brand"><img src="logos/apple-touch-icon.png" alt="" width="30" height="30">Trabit</a>
+            <nav class="nav-links" aria-label="Site">
+                <a class="hide-sm" href="#coach">Coach</a>
+                <a class="hide-sm" href="#food">Food</a>
+                <a class="hide-sm" href="#features">Features</a>
                 <a href="support.html">Support</a>
-            </div>
+                <button class="theme-toggle" type="button" data-theme-toggle aria-label="Dark mode">
+                    <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                    <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                </button>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <section class="hero">
-        <div class="container">
-            <img src="logos/Trabit_App_Icon.jpg" alt="Trabit App Icon" class="hero-logo">
-            <h1>Track any habit.<br><span>Reach any goal.</span></h1>
-            <p class="tagline">AI-powered logging, rich analytics, and social accountability. Built natively for iPhone, iPad, and Apple Watch.</p>
-            <a href="https://testflight.apple.com/join/5uVBSwkq" class="app-store-badge">
-                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Join the Beta on TestFlight">
-            </a>
-        </div>
-    </section>
+    <main id="main">
+        <!-- 1. Hero with a phone you can swipe -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="wrap">
+                <div>
+                    <span class="kicker"><b>New</b> Meet your coach</span>
+                    <h1 id="hero-title">Track any habit.<br><span class="grad">Reach any goal.</span></h1>
+                    <p class="lede">Your own personal coach, right at your fingertips.</p>
+                    <p class="sub">Habits, sleep, food, and training in one app. The coach sees the whole picture and plans around your week.</p>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="https://testflight.apple.com/join/5uVBSwkq">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.77-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.65zM14.1 5.84c.63-.77 1.06-1.84.94-2.9-.91.04-2.01.61-2.66 1.37-.58.67-1.09 1.76-.96 2.8 1.02.08 2.05-.51 2.68-1.27z"/></svg>
+                            Join the beta
+                        </a>
+                        <a class="btn btn-ghost" href="#say">Try it here</a>
+                    </div>
+                    <p class="note">Free on TestFlight. iPhone, Apple Watch, and iPad.</p>
+                </div>
 
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Everything you need to build better habits</h2>
-            <p class="section-subtitle">Powerful features that stay simple and respect your privacy.</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">✨</div>
-                    <h3>AI-Powered Logging</h3>
-                    <p>Just type naturally — "ran 5km in 25 min" — and Trabit logs it to the right habit automatically.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Rich Analytics</h3>
-                    <p>Line charts, heatmaps, pace tracking, and sleep charts to visualize your progress over time.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Goals & Streaks</h3>
-                    <p>Set target values, deadlines, or consistency challenges — and celebrate when you hit them.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3>Friends & Accountability</h3>
-                    <p>Share goals with friends, track each other's progress, and stay motivated together.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⌚</div>
-                    <h3>Everywhere You Are</h3>
-                    <p>Widgets, Apple Watch, Siri, Live Activities, and Action Button — track without opening the app.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Private by Design</h3>
-                    <p>All data lives on your device. No accounts, no servers, no tracking. Your habits, your business.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="how-it-works">
-        <div class="container">
-            <h2 class="section-title">How it works</h2>
-            <div class="steps-grid">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Create</h3>
-                    <p>Define habits that matter to you — with custom metrics, icons, and schedules.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Log</h3>
-                    <p>Track with a tap, type naturally, or let Apple Health and Siri handle it for you.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Grow</h3>
-                    <p>Watch your streaks build, analytics evolve, and goals get crushed.</p>
+                <div class="phone-stage">
+                    <div class="phone">
+                        <div class="screens" id="screens" data-dark-shots tabindex="0" aria-label="App screens. Drag, swipe, or use the tabs below.">
+                            <figure class="screen" id="scr-today" role="tabpanel" aria-labelledby="tab-today">
+                                <img src="img/01-today-660.webp?v=5" srcset="img/01-today-360.webp?v=5 360w, img/01-today-660.webp?v=5 660w" sizes="(min-width: 420px) 282px, 68vw" width="660" height="1434" fetchpriority="high"
+                                     alt="The Today screen: a logged item waiting to be confirmed, a coach note that recovery is a little low, 7 of 8 habits done with a 29-day streak, and the list of today's habits.">
+                            </figure>
+                            <figure class="screen" id="scr-coach" role="tabpanel" aria-labelledby="tab-coach">
+                                <img src="img/02-coach-660.webp?v=5" srcset="img/02-coach-360.webp?v=5 360w, img/02-coach-660.webp?v=5 660w" sizes="(min-width: 420px) 282px, 68vw" width="660" height="1434" loading="lazy" decoding="async"
+                                     alt="The Coach screen: today's briefing with readiness 68, patterns the coach has noticed, and a chat where the coach suggests swapping hard intervals for 35 easy minutes after a bad night.">
+                            </figure>
+                            <figure class="screen" id="scr-progress" role="tabpanel" aria-labelledby="tab-progress">
+                                <img src="img/03-progress-660.webp?v=5" srcset="img/03-progress-360.webp?v=5 360w, img/03-progress-660.webp?v=5 660w" sizes="(min-width: 420px) 282px, 68vw" width="660" height="1434" loading="lazy" decoding="async"
+                                     alt="The Progress screen: vitals, then every habit with its streak and consistency percentage.">
+                            </figure>
+                            <figure class="screen" id="scr-goals" role="tabpanel" aria-labelledby="tab-goals">
+                                <img src="img/05-goals-660.webp?v=5" srcset="img/05-goals-360.webp?v=5 360w, img/05-goals-660.webp?v=5 660w" sizes="(min-width: 420px) 282px, 68vw" width="660" height="1434" loading="lazy" decoding="async"
+                                     alt="The Goals screen: 24 of 50 badges earned, a read every day goal, a shared run 100 km goal with Alex and Lina, and a piano goal counting down 18 days to a concert.">
+                            </figure>
+                            <figure class="screen" id="scr-friends" role="tabpanel" aria-labelledby="tab-friends">
+                                <img src="img/06-friends-660.webp?v=5" srcset="img/06-friends-360.webp?v=5 360w, img/06-friends-660.webp?v=5 660w" sizes="(min-width: 420px) 282px, 68vw" width="660" height="1434" loading="lazy" decoding="async"
+                                     alt="The Friends screen: your profile with a 30-day streak, competitions against Alex on running distance and Marcus on pushups, and your friends' progress today.">
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="tabs" role="tablist" aria-label="App tabs">
+                        <button class="tab" role="tab" id="tab-today" aria-controls="scr-today" aria-selected="true" data-caption="Your whole day at a glance.|What to log, what the coach noticed, and your streak.">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="7" r="2"/><circle cx="5" cy="17" r="2"/><path d="M10 7h10M10 17h10"/></svg>Today
+                        </button>
+                        <button class="tab" role="tab" id="tab-coach" aria-controls="scr-coach" aria-selected="false" tabindex="-1" data-caption="A coach that knows your numbers.|Ask anything. It answers with your own data.">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.7 1.8 1.8.7-1.8.7L19 21l-.7-1.8-1.8-.7 1.8-.7z"/></svg>Coach
+                        </button>
+                        <button class="tab" role="tab" id="tab-progress" aria-controls="scr-progress" aria-selected="false" tabindex="-1" data-caption="Every habit, every streak.|See what is sticking and what needs a push.">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-6"/></svg>Progress
+                        </button>
+                        <button class="tab" role="tab" id="tab-goals" aria-controls="scr-goals" aria-selected="false" tabindex="-1" data-caption="Goals you can actually reach.|Set a target, track the pace, bring friends along.">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>Goals
+                        </button>
+                        <button class="tab" role="tab" id="tab-friends" aria-controls="scr-friends" aria-selected="false" tabindex="-1" data-caption="Better with friends.|Compete on distance, reps, or streaks.">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M15 14.5a5 5 0 0 1 6.5 5"/></svg>Friends
+                        </button>
+                    </div>
+                    <p class="caption" id="caption" aria-live="polite"><strong>Your whole day at a glance.</strong>What to log, what the coach noticed, and your streak.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="cta">
-        <div class="container">
-            <h2>Ready to build better habits?</h2>
-            <p>Join the beta. Free on TestFlight.</p>
-            <a href="https://testflight.apple.com/join/5uVBSwkq" class="app-store-badge">
-                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Join the Beta on TestFlight">
-            </a>
-        </div>
-    </section>
+        <!-- 2. Just say it -->
+        <section id="say" aria-labelledby="say-title">
+            <div class="wrap say">
+                <div class="section-head reveal">
+                    <h2 id="say-title">Just <span class="grad">say it.</span></h2>
+                    <p>Type like you'd text a friend. Trabit figures out what goes where. From the app, a widget, Siri, your Watch, or straight from a notification.</p>
+                </div>
+                <div class="glass say-box reveal">
+                    <form class="say-form" id="say-form" autocomplete="off">
+                        <label class="visually-hidden" for="say-input" style="position:absolute;left:-9999px">What did you do today?</label>
+                        <input id="say-input" type="text" placeholder="ran 5k, 2L water" maxlength="120">
+                        <button class="btn btn-primary btn-sm" type="submit">Log it</button>
+                    </form>
+                    <div class="examples" aria-label="Examples">
+                        <button class="chip" type="button">ran 5k, 2L water</button>
+                        <button class="chip" type="button">20 pushups and 30 min reading</button>
+                        <button class="chip" type="button">slept 7.5h, 40g protein shake</button>
+                        <button class="chip" type="button">10 min meditation, 8000 steps, swam 1km</button>
+                    </div>
+                    <ul class="logged" id="logged" aria-live="polite"></ul>
+                    <p class="demo-note">A simplified demo in your browser. In the app, Apple Intelligence does the reading.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. The coach plans around your week -->
+        <section id="coach" aria-labelledby="coach-title">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <h2 id="coach-title">Big day coming up?<br><span class="grad">Your week bends around it.</span></h2>
+                    <p>Race, concert, or exam. Or just a missed session. Tell the coach and watch it rework the week.</p>
+                </div>
+                <div class="glass week-card reveal">
+                    <div class="scenario-group">
+                        <span class="group-label" id="lbl-events">Coming up</span>
+                        <div class="scenarios" role="group" aria-labelledby="lbl-events">
+                            <button class="scenario" type="button" data-scenario="tri" aria-pressed="false">🏊 Triathlon on Saturday</button>
+                            <button class="scenario" type="button" data-scenario="concert" aria-pressed="false">🎻 Concert on Saturday</button>
+                            <button class="scenario" type="button" data-scenario="exam" aria-pressed="false">📚 Exam on Friday</button>
+                            <button class="scenario" type="button" data-scenario="race" aria-pressed="false">🏃 10K on Sunday</button>
+                        </div>
+                    </div>
+                    <div class="scenario-group">
+                        <span class="group-label" id="lbl-curve">Curveballs</span>
+                        <div class="scenarios" role="group" aria-labelledby="lbl-curve">
+                            <button class="scenario" type="button" data-scenario="skip" aria-pressed="false">😴 Missed Monday</button>
+                            <button class="scenario" type="button" data-scenario="recovery" aria-pressed="false">🔋 Low recovery</button>
+                            <button class="scenario" type="button" data-scenario="travel" aria-pressed="false">✈️ New time zone</button>
+                            <button class="scenario" type="button" data-scenario="nogym" aria-pressed="false">🏠 No gym</button>
+                            <button class="scenario" type="button" data-scenario="sticking" aria-pressed="false">📉 Strength isn't sticking</button>
+                        </div>
+                    </div>
+                    <div class="week" id="week" aria-live="polite"></div>
+                    <div class="legend" aria-hidden="true">
+                        <span><i style="background:var(--hard)"></i>Hard</span>
+                        <span><i style="background:var(--easy)"></i>Easy</span>
+                        <span><i style="background:var(--rest)"></i>Rest</span>
+                        <span><i class="ev"></i>Big day</span>
+                    </div>
+                    <div class="bubble" id="bubble" hidden>
+                        <img class="coach-avatar" src="logos/apple-touch-icon.png" alt="" width="36" height="36">
+                        <div class="bubble-body">
+                            <p id="bubble-text"></p>
+                            <div class="row" id="bubble-actions">
+                                <button class="btn btn-primary btn-sm" type="button" id="accept">Sounds good</button>
+                                <button class="btn btn-ghost btn-sm" type="button" id="decline">Not today</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Kitchen: receipt to pantry to dinner -->
+        <section id="food" aria-labelledby="food-title">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <h2 id="food-title">From your receipt<br><span class="grad">to tonight's dinner.</span></h2>
+                    <p>Scan your groceries once. Trabit suggests up to three dinners from what's in your kitchen, sized to what your body needs today.</p>
+                </div>
+                <div class="kitchen">
+                    <div class="glass panel reveal">
+                        <h3><span class="step-no">1</span>Scan a receipt</h3>
+                        <div class="receipt" id="receipt" aria-label="Example grocery receipt">
+                            <div class="row muted-line"><span>GREEN MARKET</span><span>09/25</span></div>
+                            <div class="row"><span>ORG BNLS CKN BRST</span><span>8.99</span></div>
+                            <div class="row"><span>BSMTI RICE 1KG</span><span>3.49</span></div>
+                            <div class="row"><span>BABY SPNCH</span><span>2.79</span></div>
+                            <div class="row"><span>GRK YOG 0%</span><span>4.29</span></div>
+                            <div class="row"><span>FREE RNG EGGS 12</span><span>3.99</span></div>
+                            <div class="row"><span>AVOCADO X2</span><span>2.50</span></div>
+                            <div class="row muted-line"><span>TOTAL</span><span>26.05</span></div>
+                            <div class="scanline"></div>
+                        </div>
+                        <button class="btn btn-primary btn-sm" type="button" id="scan">Scan receipt</button>
+                        <ul class="pantry" id="pantry" aria-live="polite"></ul>
+                    </div>
+                    <div class="glass panel reveal">
+                        <h3><span class="step-no">2</span>Pick tonight's dinner</h3>
+                        <div class="gap-row">
+                            <div class="ring" id="ring" style="--p:79"><span id="ring-val">118</span></div>
+                            <div>
+                                <strong id="gap-text">32 g protein to go today</strong>
+                                <div class="muted" style="font-size:0.9375rem">Intervals tomorrow, so dinner aims to close the gap.</div>
+                            </div>
+                        </div>
+                        <div id="dinner-slot">
+                            <p class="placeholder">Scan the receipt first. Ideas only use what you actually have.</p>
+                        </div>
+                        <div class="estimate">
+                            <span style="font-size:1.6rem" aria-hidden="true">📸</span>
+                            <div>
+                                <strong>Eating out?</strong>
+                                <div class="muted" style="font-size:0.9375rem">Describe or snap your plate for a quick estimate, like <span class="big" style="font-size:1rem">~35 g protein, ~520 kcal</span>.</div>
+                            </div>
+                        </div>
+                        <p class="fine">Estimates are approximate. Photo estimates need iOS 27.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Numbers -->
+        <section id="numbers" aria-labelledby="numbers-title">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <h2 id="numbers-title">Every habit <span class="grad">keeps score.</span></h2>
+                    <p>Runs, practice, planks, pages. Each habit gets its own stats, records, and a plain-language read on how it's going.</p>
+                </div>
+                <div class="glass habit-card reveal">
+                    <div class="habit-tabs" role="tablist" aria-label="Example habits">
+                        <button class="habit-tab" role="tab" aria-selected="true" data-habit="running">🏃 Running</button>
+                        <button class="habit-tab" role="tab" aria-selected="false" tabindex="-1" data-habit="piano">🎹 Piano</button>
+                        <button class="habit-tab" role="tab" aria-selected="false" tabindex="-1" data-habit="plank">🧘 Plank</button>
+                    </div>
+                    <div class="habit-body" id="habit-body" role="tabpanel" aria-live="polite">
+                        <div>
+                            <div class="stats" id="h-stats"></div>
+                            <div class="insight" id="h-insight"></div>
+                            <div class="records" id="h-records"></div>
+                        </div>
+                        <div class="chart-box">
+                            <h3 id="h-chart-title">Weekly distance (km)</h3>
+                            <svg class="bars" id="h-bars" viewBox="0 0 560 220" role="img" aria-label=""></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="science-head reveal">
+                    <h3>Habit Science, built in.</h3>
+                    <p class="muted">Short reads on how habits really work, with the research behind them. Tap a question.</p>
+                </div>
+                <div class="questions">
+                    <div class="qcol">
+                        <details class="glass q reveal">
+                            <summary>How long does it really take to form a habit?</summary>
+                            <p>About 66 days on average, not the 21 you often hear. In the study it ranged from 18 to 254 days. <span class="cite">Lally et al., 2010</span></p>
+                        </details>
+                        <details class="glass q reveal">
+                            <summary>Does missing one day ruin a new habit?</summary>
+                            <p>No. A single missed day barely made a difference. That's why Trabit streaks forgive one off day, but not two in a row. <span class="cite">Lally et al., 2010</span></p>
+                        </details>
+                        <details class="glass q reveal">
+                            <summary>Why does environment beat willpower?</summary>
+                            <p>Around 43% of what you do each day runs on autopilot, cued by the same time and place. Change the cue and the habit follows. <span class="cite">Wood, Quinn &amp; Kashy, 2002</span></p>
+                        </details>
+                    </div>
+                    <div class="qcol">
+                        <details class="glass q reveal">
+                            <summary>Can one habit carry another?</summary>
+                            <p>Yes. Tie a new habit to one you already have, like "after coffee, I stretch", and you're much more likely to follow through. <span class="cite">Gollwitzer &amp; Sheeran, 2006</span></p>
+                        </details>
+                        <details class="glass q reveal">
+                            <summary>Does tracking actually help?</summary>
+                            <p>Yes. Across 138 studies, keeping an eye on your progress was one of the most reliable ways to change behavior. <span class="cite">Harkin et al., 2016</span></p>
+                        </details>
+                        <details class="glass q reveal">
+                            <summary>Why do Mondays feel like a fresh start?</summary>
+                            <p>New weeks, months, and birthdays make people more likely to start working on goals. Use them. <span class="cite">Dai, Milkman &amp; Riis, 2014</span></p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Everything else, one line each -->
+        <section id="features" aria-labelledby="features-title">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <h2 id="features-title">All of you. <span class="grad">One app.</span></h2>
+                </div>
+                <div class="bento">
+                    <div class="glass tile span-2 reveal">
+                        <h3>Sleep, training, and food, connected.</h3>
+                        <div class="night-toggle" role="group" aria-label="What happened">
+                            <button type="button" class="scenario" data-night="good" aria-pressed="true">😌 Slept well</button>
+                            <button type="button" class="scenario" data-night="short" aria-pressed="false">🥱 Short night</button>
+                            <button type="button" class="scenario" data-night="fuel" aria-pressed="false">🍗 Low protein yesterday</button>
+                            <button type="button" class="scenario" data-night="workout" aria-pressed="false">⌚ Just finished a run</button>
+                            <button type="button" class="scenario" data-night="calendar" aria-pressed="false">📅 Packed day</button>
+                            <button type="button" class="scenario" data-night="late" aria-pressed="false">🍝 Late dinners</button>
+                        </div>
+                        <div class="strip" id="strip" aria-live="polite"></div>
+                        <p id="strip-text"></p>
+                    </div>
+                    <div class="glass tile reveal">
+                        <div class="flame"><span aria-hidden="true">🔥</span><span id="streak-count">38</span><small>day streak</small></div>
+                        <div class="mini-cal" aria-hidden="true">
+                            <span></span><span></span><span></span><span class="frz">❄️</span><span></span><span></span><span></span>
+                        </div>
+                        <p style="margin-top:14px">❄️ marks a missed day your streak freeze covered.</p>
+                    </div>
+                    <div class="glass tile goal-tile reveal">
+                        <h3>Goals with a finish line.</h3>
+                        <div class="countdown">
+                            <div class="cal" aria-hidden="true"><i id="cal-month">OCT</i><b id="cal-day">25</b></div>
+                            <div>
+                                <div class="days"><span id="days-left">30</span> <small>days left</small></div>
+                                <div class="target"><strong>Coastal half marathon</strong><br><span id="target-date">Oct 25, 2026</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass tile span-2 reveal">
+                        <h3>Compete with your crew. <span class="badge">GROUP</span></h3>
+                        <p>Steps this week. Solo challenges or whole groups.</p>
+                        <ol class="board">
+                            <li><span class="pos">1</span><span class="who">👑 Alex</span><span>7,965 steps</span></li>
+                            <li class="me"><span class="pos">2</span><span class="who">You</span><span>7,868 steps</span></li>
+                            <li><span class="pos">3</span><span class="who">Lina</span><span>7,479 steps</span></li>
+                        </ol>
+                    </div>
+                    <div class="glass tile span-2 reveal">
+                        <h3>Wherever you are.</h3>
+                        <p>Log without opening the app, and keep Apple Health in sync both ways.</p>
+                        <div class="pills">
+                            <span>iPhone</span><span>Apple Watch</span><span>iPad</span><span>Widgets</span><span>Live Activities</span><span>Siri</span><span>Apple Health</span>
+                        </div>
+                    </div>
+                    <div class="glass tile reveal">
+                        <span class="emoji" aria-hidden="true">🏆</span>
+                        <h3>50 badges to earn.</h3>
+                        <p>From First Step to Centurion, your 100-day streak. Little wins along the way.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Privacy -->
+        <section class="privacy" aria-labelledby="privacy-title">
+            <div class="wrap reveal">
+                <div class="shield" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                </div>
+                <h2 id="privacy-title">Private by design.</h2>
+                <p>Your data lives on your device and in your iCloud. The coach runs on Apple Intelligence, on your device or in Apple's Private Cloud Compute.</p>
+                <ul class="facts">
+                    <li>No Trabit servers</li>
+                    <li>No ads</li>
+                    <li>No tracking</li>
+                    <li>No third-party AI</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cta" aria-labelledby="cta-title">
+            <div class="wrap reveal">
+                <img class="icon" src="logos/apple-touch-icon.png" alt="" width="96" height="96" loading="lazy">
+                <h2 id="cta-title">Ready when you are.</h2>
+                <p class="muted">Join the beta. Free on TestFlight.</p>
+                <a class="btn btn-primary" href="https://testflight.apple.com/join/5uVBSwkq">Join the beta</a>
+            </div>
+        </section>
+    </main>
 
     <footer class="footer">
-        <div class="container">
-            <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="support.html">Support</a>
-            </div>
-            <p>&copy; 2026 Trabit. All rights reserved.</p>
+        <div class="wrap">
+            <ul>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Use</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+            <p style="margin:0">&copy; 2026 Trabit. All rights reserved.</p>
         </div>
     </footer>
 
-    <script data-goatcounter="https://trabit.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script src="theme.js" defer></script>
+    <script src="home.js" defer></script>
+    <script data-goatcounter="https://trabit.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>

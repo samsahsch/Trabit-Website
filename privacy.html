@@ -2,85 +2,149 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy — Trabit</title>
-    <meta name="description" content="Trabit Privacy Policy. Learn how your data is handled — locally, privately, and securely.">
-    <link rel="apple-touch-icon" sizes="180x180" href="/logos/apple-touch-icon.png?v=2">
-    <link rel="icon" type="image/png" sizes="32x32" href="/logos/favicon-32x32.png?v=2">
-    <link rel="icon" type="image/png" sizes="16x16" href="/logos/favicon-16x16.png?v=2">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Privacy Policy | Trabit</title>
+    <meta name="description" content="Trabit Privacy Policy. How the Trabit app and trabit.app handle your data.">
+    <link rel="canonical" href="https://trabit.app/privacy">
+    <link rel="apple-touch-icon" sizes="180x180" href="logos/apple-touch-icon.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="logos/favicon-32x32.png?v=3">
+    <link rel="icon" type="image/png" sizes="16x16" href="logos/favicon-16x16.png?v=3">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trabit.app/privacy">
+    <meta property="og:title" content="Trabit Privacy Policy">
+    <meta property="og:description" content="How the Trabit app and trabit.app handle your data.">
+    <meta property="og:image" content="https://trabit.app/img/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a class="skip" href="#main">Skip to content</a>
 
-    <nav class="nav">
+    <header class="nav">
         <div class="container">
-            <a href="index.html" class="nav-brand">
-                <img src="logos/Trabit_App_Icon.jpg" alt="Trabit" class="nav-logo">
+            <a href="index.html" class="brand">
+                <img src="logos/apple-touch-icon.png" alt="" width="30" height="30">
                 Trabit
             </a>
-            <div class="nav-links">
-                <a href="privacy.html">Privacy</a>
+            <nav class="nav-links" aria-label="Site">
+                <a class="hide-sm" href="index.html#coach">Coach</a>
+                <a class="hide-sm" href="index.html#food">Food</a>
+                <a class="hide-sm" href="index.html#features">Features</a>
                 <a href="support.html">Support</a>
-            </div>
+                <button class="theme-toggle" type="button" data-theme-toggle aria-label="Dark mode">
+                    <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                    <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                </button>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <main class="page-content">
-        <div class="container">
+    <main id="main" class="page">
+        <div class="container narrow">
             <h1>Privacy Policy</h1>
-            <p class="subtitle"><strong>Last Updated:</strong> March 9, 2026</p>
+            <p class="meta"><strong>Effective date:</strong> September 25, 2026</p>
 
-            <p>Trabit ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how your data is handled when you use the Trabit application.</p>
+            <p>This Privacy Policy explains how Trabit ("Trabit", "we", "our", or "us") handles information when you use the Trabit app for iPhone, iPad, and Apple Watch (the "App") and the website trabit.app (the "Website"). By using the App or the Website, you acknowledge this Policy.</p>
+            <p>In short: we do not operate servers that store your personal or health data, we do not sell data, and we do not use your data for advertising.</p>
 
-            <h2>1. Data Storage</h2>
-            <p>All of your habit tracking data, goals, and logs are stored locally on your device using Apple's native SwiftData framework. <strong>We do not own, operate, or maintain any external servers, and we do not have access to your personal habit data.</strong></p>
+            <h2>1. Who is responsible</h2>
+            <p>Trabit is responsible for the App and the Website. For any privacy question or request, contact <a href="mailto:support@trabit.app">support@trabit.app</a>.</p>
 
-            <h2>2. Social Features & Shared Data</h2>
-            <p>Trabit offers optional social features that allow you to share goals and track progress with friends. When you opt in to these features, limited data is stored in Apple's CloudKit public database to enable sharing:</p>
+            <h2>2. Information the App handles</h2>
+            <p>Depending on the features you use, the App handles:</p>
             <ul>
-                <li><strong>What is shared:</strong> Your display name (optional), share code, and any goals you explicitly choose to share — including the goal title, habit name, progress percentage, streak count, and completion status.</li>
-                <li><strong>How it works:</strong> Sharing is powered entirely by Apple's CloudKit infrastructure. We do not operate a separate server.</li>
-                <li><strong>Your control:</strong> You choose which goals to share on a per-goal basis. You can stop sharing any goal at any time. No data is shared unless you explicitly enable it.</li>
-                <li><strong>Friend connections:</strong> Friend links are stored in your private iCloud database and are only visible to you.</li>
-                <li><strong>HealthKit data is never shared:</strong> Your Apple Health data is never included in shared goals, even when social features are enabled.</li>
+                <li><strong>Habit and activity data:</strong> habits, logs, goals, streaks, training plans, and notes you enter.</li>
+                <li><strong>Health and fitness data:</strong> data you allow the App to read from Apple Health: steps, walking and running distance, cycling distance, swimming distance, workouts, active energy, exercise minutes, stand minutes, flights climbed, sleep, heart rate, resting heart rate, walking heart rate average, heart rate variability, respiratory rate, blood oxygen, VO₂ max, and dietary energy, protein, and carbohydrates.</li>
+                <li><strong>Food data:</strong> meals, protein and calorie estimates, scanned food barcodes, pantry items, and dinner suggestions.</li>
+                <li><strong>Photos you choose:</strong> photos of meals, receipts, or your fridge or cupboard that you capture or share with the App.</li>
+                <li><strong>Coach data:</strong> messages you send to the coach, its replies, your training plans, and what the coach remembers about your preferences.</li>
+                <li><strong>Social data (optional):</strong> your display name, share code, friend connections, and goals or competitions you choose to share.</li>
+                <li><strong>Approximate location (optional):</strong> if you turn on weather awareness, a rough location (to about a kilometre) is used to look up the forecast.</li>
+                <li><strong>Calendar load (optional):</strong> if you turn on calendar awareness, the App reads how many hours are booked on each day. It never reads event titles, attendees, notes, or places.</li>
+            </ul>
+            <p>The App does not ask for your name, email address, phone number, contacts, or payment details, and it never uses your location except for the optional weather lookup described in Section 9.</p>
+
+            <h2>3. Where your data is stored</h2>
+            <ul>
+                <li><strong>On your device.</strong> App data is stored locally on your device.</li>
+                <li><strong>In your iCloud.</strong> If you are signed in to iCloud, your habits, logs, and goals sync between your own devices through your private iCloud database, provided by Apple (CloudKit). This data is held under your Apple Account and is not accessible to us.</li>
+                <li><strong>On this device only.</strong> Coach conversations, coach memory, training plans, and your pantry are stored only on the device where you created them and are not synced.</li>
+                <li><strong>Widgets and notifications.</strong> A small summary of your day is shared between the App, its widgets, and its Apple Watch app on your own devices so they can show your progress.</li>
+                <li><strong>Shared social data.</strong> If you use friend features, the limited data listed in Section 6 is stored in Apple's CloudKit public database so the friends you connect with can see it.</li>
+            </ul>
+            <p>We do not own or operate any server that receives or stores your App data.</p>
+
+            <h2>4. Apple Intelligence and the coach</h2>
+            <p>The coach, natural language logging, meal estimates, and pantry scanning use Apple's Foundation Models framework and Apple's on-device text recognition. Most requests are processed on your device by Apple's on-device model. On iOS 27, the enhanced coach can also use Apple Private Cloud Compute. Apple states that data sent to Private Cloud Compute is used only to fulfil the request and is not stored or made accessible to Apple. We do not receive this data, and no third-party AI provider is used.</p>
+            <p>Coach features require a device that supports Apple Intelligence. Meal photo estimates and fridge or cupboard scans require iOS 27.</p>
+
+            <h2>5. Apple Health (HealthKit)</h2>
+            <ul>
+                <li>The App reads Apple Health data only for the types you authorise, and only to track your habits and inform the coach.</li>
+                <li>The App writes to Apple Health only if you turn on meal write-back in Profile, Health Integration. It is off by default. When on, the App writes dietary protein and dietary energy from meals you log, and nothing else.</li>
+                <li>Health data is never used for advertising, marketing, or data mining, and is never sold or disclosed to advertising platforms, data brokers, or information resellers.</li>
+                <li>Health data is never included in social features.</li>
+                <li>You can revoke access at any time in the Health app or in iOS Settings.</li>
             </ul>
 
-            <h2>3. Apple Health (HealthKit) Integration</h2>
-            <p>Trabit optionally integrates with Apple's Health app (HealthKit) to automatically log habits such as steps, distance, and workouts. If you grant permission:</p>
+            <h2>6. Friends and competitions</h2>
+            <p>Social features are optional and require iCloud. When you use them, the following is stored in Apple's CloudKit public database:</p>
             <ul>
-                <li><strong>Read-Only Access:</strong> Trabit only reads the specific HealthKit data you authorize to calculate your habit progress.</li>
-                <li><strong>No External Transmission:</strong> Your HealthKit data is processed entirely locally on your device. It is never transmitted to us or any third-party servers.</li>
-                <li><strong>No Advertising or Marketing:</strong> We will never use your HealthKit data for advertising, marketing, or any use-based data mining.</li>
-                <li><strong>No Data Brokers:</strong> We will never sell, share, or disclose your HealthKit data to data brokers, advertising platforms, or other third parties.</li>
+                <li>Your display name (if you set one) and your share code.</li>
+                <li>Goals and competitions you choose to share: their names, progress values, streak counts, and completion status.</li>
             </ul>
+            <p>You choose what to share, one goal at a time, and you can stop sharing at any time. Your list of friends is stored in your private iCloud database. Raw logs, coach conversations, photos, and Apple Health data are never shared.</p>
 
-            <h2>4. Analytics and Tracking</h2>
-            <p><strong>The Trabit app</strong> does not include any third-party tracking, analytics, or advertising frameworks. We do not track your behavior across other apps or websites.</p>
-            <p><strong>The trabit.app website</strong> uses <a href="https://www.goatcounter.com">GoatCounter</a>, a privacy-friendly, open-source analytics tool that collects anonymous page view statistics. GoatCounter does not use cookies, does not collect personal data, and is fully GDPR compliant.</p>
+            <h2>7. Photos and the share extension</h2>
+            <p>Photos you capture for meal, receipt, or fridge scanning are processed on your device as described in Section 4. Photos or text you send to Trabit from the iOS share sheet are saved in your own App data for you to review. We do not receive them.</p>
 
-            <h2>5. On-Device AI</h2>
-            <p>Trabit uses Apple's on-device AI (FoundationModels framework) to parse natural language input for habit logging. All AI processing happens locally on your device. No input or data is sent to external servers for processing.</p>
+            <h2>8. How we use information</h2>
+            <p>Information is used only to provide the App's features to you: tracking habits, showing progress, generating coach suggestions, and enabling the social features you turn on. We do not use your information for advertising, profiling for third parties, or tracking across apps and websites.</p>
 
-            <h2>6. Changes to This Policy</h2>
-            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+            <h2>9. Third parties</h2>
+            <p>The App relies on services provided by Apple Inc. (iCloud and CloudKit, HealthKit, Apple Intelligence, Private Cloud Compute, and WeatherKit), which are governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>. The App contains no third-party analytics, advertising, crash reporting, or tracking SDKs. We do not sell or rent personal information.</p>
+            <p><strong>Weather.</strong> Weather awareness is off by default. If you turn it on, the App sends a rough location to Apple's WeatherKit service to get the forecast. The location is kept in memory on your device for a few hours and is never stored or sent to us. You can turn weather awareness off in Profile, Coach, or revoke location access in iOS Settings.</p>
+            <p><strong>Calendar.</strong> Calendar awareness is off by default. If you turn it on, the busy hours per day are read and used on your device only.</p>
+            <p><strong>Food barcodes.</strong> When you scan a food barcode, the App looks the product up in <a href="https://world.openfoodfacts.org">Open Food Facts</a>, an open, non-profit food database. Only the barcode number is sent. No identifiers, health data, or other information about you are included. Open Food Facts may, like any website, see your IP address when the request is made.</p>
+            <p>The App includes an optional donation link. If you choose to donate, the payment is handled by PayPal under its own privacy policy. We receive only what PayPal shares with recipients of a payment.</p>
 
-            <h2>7. Contact Us</h2>
-            <p>If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:support@trabit.app">support@trabit.app</a></p>
+            <h2>10. The Website</h2>
+            <p>The Website is hosted on GitHub Pages. It uses <a href="https://www.goatcounter.com">GoatCounter</a> to count page views. GoatCounter does not use cookies and does not collect personal data. The Website sets no cookies. If you choose a light or dark theme, that preference is stored in your browser only. As with any website, the hosting provider may process technical data such as IP addresses to deliver the pages securely.</p>
 
-            <a href="index.html" class="back-link">&larr; Back to Home</a>
+            <h2>11. Retention and deletion</h2>
+            <p>Your data stays on your device and in your iCloud until you delete it. You can delete habits and logs in the App. Deleting the App removes its data from that device. To delete the synced copy, go to iOS Settings, your name, iCloud, and remove Trabit's data. To remove shared social data, stop sharing the relevant goals in the App. You can export your data as a CSV file from Profile.</p>
+
+            <h2>12. Your rights</h2>
+            <p>Depending on where you live, including the European Economic Area, the United Kingdom, and California, you may have rights to access, correct, delete, or port your personal data, and to object to or restrict its processing. Because your data is held on your device and in your own iCloud, you can exercise most of these rights directly in the App or in your Apple Account settings. For anything else, email <a href="mailto:support@trabit.app">support@trabit.app</a>. You also have the right to lodge a complaint with your local data protection authority.</p>
+            <p>We do not sell or share personal information as those terms are defined under California law.</p>
+
+            <h2>13. Security</h2>
+            <p>Your data is protected by your device's security and by Apple's iCloud security measures. No method of storage or transmission is completely secure, and we cannot guarantee absolute security.</p>
+
+            <h2>14. Children</h2>
+            <p>The App is not directed at children under 13, or the minimum age required in your country. We do not knowingly collect personal information from children.</p>
+
+            <h2>15. Changes to this Policy</h2>
+            <p>We may update this Policy from time to time. The effective date at the top shows when it was last changed. Significant changes will be noted in the App's release notes or on this page.</p>
+
+            <h2>16. Contact</h2>
+            <p>Questions about this Policy: <a href="mailto:support@trabit.app">support@trabit.app</a></p>
         </div>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="support.html">Support</a>
-            </div>
+            <ul class="footer-links">
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Use</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
             <p>&copy; 2026 Trabit. All rights reserved.</p>
         </div>
     </footer>
 
-    <script data-goatcounter="https://trabit.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script src="theme.js" defer></script>
+    <script data-goatcounter="https://trabit.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>

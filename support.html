@@ -2,115 +2,140 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support — Trabit</title>
-    <meta name="description" content="Get help with Trabit. Find answers to common questions or contact our support team.">
-    <link rel="apple-touch-icon" sizes="180x180" href="/logos/apple-touch-icon.png?v=2">
-    <link rel="icon" type="image/png" sizes="32x32" href="/logos/favicon-32x32.png?v=2">
-    <link rel="icon" type="image/png" sizes="16x16" href="/logos/favicon-16x16.png?v=2">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Support | Trabit</title>
+    <meta name="description" content="Get help with Trabit. Find answers to common questions or contact support.">
+    <link rel="canonical" href="https://trabit.app/support">
+    <link rel="apple-touch-icon" sizes="180x180" href="logos/apple-touch-icon.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="logos/favicon-32x32.png?v=3">
+    <link rel="icon" type="image/png" sizes="16x16" href="logos/favicon-16x16.png?v=3">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trabit.app/support">
+    <meta property="og:title" content="Trabit Support">
+    <meta property="og:description" content="Find answers to common questions or contact support.">
+    <meta property="og:image" content="https://trabit.app/img/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a class="skip" href="#main">Skip to content</a>
 
-    <nav class="nav">
+    <header class="nav">
         <div class="container">
-            <a href="index.html" class="nav-brand">
-                <img src="logos/Trabit_App_Icon.jpg" alt="Trabit" class="nav-logo">
+            <a href="index.html" class="brand">
+                <img src="logos/apple-touch-icon.png" alt="" width="30" height="30">
                 Trabit
             </a>
-            <div class="nav-links">
-                <a href="privacy.html">Privacy</a>
-                <a href="support.html">Support</a>
-            </div>
+            <nav class="nav-links" aria-label="Site">
+                <a class="hide-sm" href="index.html#coach">Coach</a>
+                <a class="hide-sm" href="index.html#food">Food</a>
+                <a class="hide-sm" href="index.html#features">Features</a>
+                <a href="support.html" aria-current="page">Support</a>
+                <button class="theme-toggle" type="button" data-theme-toggle aria-label="Dark mode">
+                    <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                    <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                </button>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <main class="page-content">
-        <div class="container">
+    <main id="main" class="page">
+        <div class="container narrow">
             <h1>Support</h1>
-            <p class="subtitle">Need help with Trabit? We're here for you.</p>
+            <p class="lead">Need help with Trabit? We're here for you.</p>
 
             <div class="support-options">
                 <div class="support-card">
-                    <div class="icon">✉️</div>
-                    <h3>Email Us</h3>
+                    <div class="icon" aria-hidden="true">✉️</div>
+                    <h2>Email us</h2>
                     <p><a href="mailto:support@trabit.app">support@trabit.app</a></p>
                 </div>
                 <div class="support-card">
-                    <div class="icon">💬</div>
-                    <h3>Response Time</h3>
+                    <div class="icon" aria-hidden="true">💬</div>
+                    <h2>Response time</h2>
                     <p>We typically respond within 24 hours.</p>
                 </div>
             </div>
 
-            <div class="faq-section">
-                <h2>Frequently Asked Questions</h2>
+            <section class="faq" aria-labelledby="faq-title">
+                <h2 id="faq-title">Frequently asked questions</h2>
 
-                <details class="faq-item">
-                    <summary>Where is my data stored?</summary>
-                    <p>All habit data is stored locally on your device using Apple's SwiftData framework. We don't have servers and never see your personal data. If you use social features, only the goals you explicitly share are stored in Apple's CloudKit.</p>
+                <details>
+                    <summary>What do I need to use Trabit?</summary>
+                    <p>An iPhone or iPad on iOS 26 or later. The Watch app needs a paired Apple Watch. The coach needs a device that supports Apple Intelligence; everything else works on any supported device. Trabit is free, with no ads, in-app purchases, or subscriptions. The app is available in English, Arabic, Chinese (Simplified), Dutch, French, German, Italian, Japanese, Korean, Portuguese (Brazil), and Spanish. Some coach messages are still in English only.</p>
                 </details>
 
-                <details class="faq-item">
-                    <summary>What platforms does Trabit support?</summary>
-                    <p>Trabit runs on iPhone, iPad, and Apple Watch. It also supports Home Screen and Lock Screen widgets, Live Activities, Siri, and the Action Button on iPhone 15 Pro and later.</p>
+                <details>
+                    <summary>What does the coach do?</summary>
+                    <p>It plans your week and keeps it realistic. Tell it about a race, a concert, or an exam, and it shapes the days around it. It moves a missed session, lightens the load when your recovery is low, switches to home or hotel workouts when you travel, and suggests fewer sessions when a routine isn't sticking. It works for training, practice, and study. Nothing changes unless you accept it.</p>
                 </details>
 
-                <details class="faq-item">
-                    <summary>How does AI-powered logging work?</summary>
-                    <p>You can type naturally — like "ran 5km in 25 min" or "20 pushups, drank 3L water" — and Trabit automatically parses it and logs it to the right habits. All AI processing happens on-device using Apple Intelligence. No data is sent externally.</p>
+                <details>
+                    <summary>How do I log quickly?</summary>
+                    <p>Type naturally, like "ran 5km, 2L water", in the app or straight into a notification reply. You can also say "Log running in Trabit" to Siri, tap a widget or your Apple Watch, or add the "Log next habit" control to Control Center or the Action Button. Anything Trabit isn't sure about waits in "For you to confirm" on the Today screen.</p>
                 </details>
 
-                <details class="faq-item">
-                    <summary>Does Trabit work offline?</summary>
-                    <p>Yes. Trabit works fully offline. All habit tracking, logging, and analytics are available without an internet connection.</p>
+                <details>
+                    <summary>How do meal estimates work?</summary>
+                    <p>Describe your meal and Trabit gives a rough protein and calorie estimate. On iOS 27 you can also snap a photo. Treat estimates as a starting point, and enter the real numbers if you know them.</p>
                 </details>
 
-                <details class="faq-item">
-                    <summary>How does Apple Health integration work?</summary>
-                    <p>When you grant permission, Trabit can read data like steps, distance, active energy, and workouts from Apple Health to automatically track your habits. This data is processed locally and never leaves your device.</p>
+                <details>
+                    <summary>How does the pantry work?</summary>
+                    <p>Photograph a grocery receipt and Trabit adds the items to your pantry, each marked Plenty, Some, Low, or Out. On iOS 27 you can also snap your fridge or cupboard. In the evening you get up to three dinner ideas made from what you have, sized to your protein goal. Tap Cooked it and the pantry updates. Anything running low goes on your shopping list.</p>
                 </details>
 
-                <details class="faq-item">
+                <details>
+                    <summary>What are streak freezes?</summary>
+                    <p>A freeze covers one missed day so your streak survives. Every streak starts with one, you earn another after 7 days in a row, and you can hold up to 2. Missing two days in a row still resets the streak. Rest days never count as misses.</p>
+                </details>
+
+                <details>
                     <summary>How do I connect with friends?</summary>
-                    <p>Each user gets a unique share code (like TRABIT-XXXXXX). You can share it via QR code, link, or by copying it. Friends can see the goals you choose to share — your personal habit data stays private.</p>
+                    <p>Each user gets a share code (like TRABIT-XXXXXX). Share it by QR code, link, or text. Friends only see the goals and competitions you choose to share. Friend features need iCloud.</p>
                 </details>
 
-                <details class="faq-item">
-                    <summary>What are shared goals?</summary>
-                    <p>You can share specific goals with friends so they can see your progress. Only the goal title, progress, and streak are visible — never your raw habit logs or health data. You control sharing on a per-goal basis.</p>
+                <details>
+                    <summary>An invite link opened in Safari instead of the app. What do I do?</summary>
+                    <p>Make sure Trabit is installed and up to date. Then long-press the link and choose Open in Trabit.</p>
                 </details>
 
-                <details class="faq-item">
-                    <summary>Can I export my data?</summary>
-                    <p>Yes. You can export all your habit data as a CSV file from the Goals tab in the app.</p>
+                <details>
+                    <summary>What does the Apple Watch app do?</summary>
+                    <p>It shows today's progress and your next habit, and you can tap to log, even when your iPhone is locked. You can also check your weekly goals, friends, and competitions, and add Trabit complications to your watch face.</p>
                 </details>
 
-                <details class="faq-item">
-                    <summary>How do I delete my data?</summary>
-                    <p>You can delete individual habits or all data directly within the app. Since no personal data is stored on our servers, deleting it from your device removes it completely.</p>
+                <details>
+                    <summary>How does Apple Health integration work?</summary>
+                    <p>With your permission, Trabit reads data like steps, workouts, sleep, and heart rate to track habits and inform the coach. Workouts from your Apple Watch appear as their own habits, like Running, Cycling, or Swimming. Writing meals back to Apple Health (protein and energy only) is optional and off by default.</p>
                 </details>
 
-                <details class="faq-item">
-                    <summary>How do widgets and Live Activities work?</summary>
-                    <p>Trabit offers 6 widget sizes for your Home Screen and Lock Screen, including interactive widgets that let you complete habits with a tap. Live Activities show your daily progress on the Lock Screen and Dynamic Island throughout the day.</p>
+                <details>
+                    <summary>Where is my data stored?</summary>
+                    <p>On your device and in your own iCloud. We don't run servers that hold your data. The coach uses Apple's on-device model or Apple Private Cloud Compute. See the <a href="privacy.html">Privacy Policy</a> for details.</p>
                 </details>
-            </div>
 
-            <a href="index.html" class="back-link">&larr; Back to Home</a>
+                <details>
+                    <summary>Can I export or delete my data?</summary>
+                    <p>Yes. Export everything as a CSV file from Profile. Delete habits and logs in the app, and remove the iCloud copy in iOS Settings, your name, iCloud.</p>
+                </details>
+            </section>
         </div>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="support.html">Support</a>
-            </div>
+            <ul class="footer-links">
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Use</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
             <p>&copy; 2026 Trabit. All rights reserved.</p>
         </div>
     </footer>
 
-    <script data-goatcounter="https://trabit.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script src="theme.js" defer></script>
+    <script data-goatcounter="https://trabit.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>

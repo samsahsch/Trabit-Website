@@ -1,0 +1,34 @@
+{
+    "applinks": {
+        "details": [
+            {
+                "appIDs": [
+                    "W9QF9CX2JA.com.samuel.Trabit"
+                ],
+                "components": [
+                    { "/": "/add", "?": { "code": "?*" }, "comment": "Add friend by code" },
+                    { "/": "/add/*", "comment": "Add friend paths" },
+                    { "/": "/profile", "comment": "Profile" },
+                    { "/": "/profile/*", "comment": "Profile subpaths" },
+                    { "/": "/goals", "comment": "Goals" },
+                    { "/": "/goals/*", "comment": "Goals subpaths" },
+                    { "/": "/progress", "comment": "Progress" },
+                    { "/": "/progress/*", "comment": "Progress subpaths" },
+                    { "/": "/friends", "comment": "Friends" },
+                    { "/": "/friends/*", "comment": "Friends subpaths" },
+                    { "/": "/today", "comment": "Today" },
+                    { "/": "/today/*", "comment": "Today subpaths" },
+                    { "/": "/stats", "comment": "Stats" },
+                    { "/": "/stats/*", "comment": "Stats subpaths" },
+                    { "/": "/join", "comment": "Join goal" },
+                    { "/": "/join/*", "comment": "Join goal subpaths" }
+                ]
+            }
+        ]
+    },
+    "webcredentials": {
+        "apps": [
+            "W9QF9CX2JA.com.samuel.Trabit"
+        ]
+    }
+}
