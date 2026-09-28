@@ -83,37 +83,254 @@
     });
 
     /* ---------- 2. "Just say it" demo parser ---------- */
-    // A deliberately small rule set, enough to show the idea. The app itself uses Apple Intelligence.
-    var NUM = '(\\d+(?:[.,]\\d+)?)';
-    var rules = [
-        { re: new RegExp(NUM + '\\s*(?:l|liters?|litres?)\\b', 'i'), ico: '💧', name: 'Water', fmt: function (m) { return m[1] + ' L'; } },
-        { re: new RegExp(NUM + '\\s*ml\\b', 'i'), ico: '💧', name: 'Water', fmt: function (m) { return m[1] + ' ml'; } },
-        { re: new RegExp('(?:ran|run|running|jog(?:ged)?)\\D*' + NUM + '\\s*(k|km|mi|miles?)\\b', 'i'), ico: '🏃', name: 'Running', fmt: function (m) { return m[1] + (/^mi/i.test(m[2]) ? ' mi' : ' km'); } },
-        { re: new RegExp(NUM + '\\s*(k|km|mi|miles?)\\s*(?:run|jog)', 'i'), ico: '🏃', name: 'Running', fmt: function (m) { return m[1] + (/^mi/i.test(m[2]) ? ' mi' : ' km'); } },
-        { re: new RegExp('(?:swam|swim)\\D*' + NUM + '\\s*(m|km)\\b', 'i'), ico: '🏊', name: 'Swimming', fmt: function (m) { return m[1] + ' ' + m[2]; } },
-        { re: new RegExp(NUM + '\\s*push\\s*-?ups?', 'i'), ico: '💪', name: 'Pushups', fmt: function (m) { return m[1] + ' reps'; } },
-        { re: new RegExp(NUM + '\\s*(min|mins|minutes?|h|hours?)\\b.*read', 'i'), ico: '📖', name: 'Reading', fmt: dur },
-        { re: new RegExp('read\\D*' + NUM + '\\s*(min|mins|minutes?|h|hours?)\\b', 'i'), ico: '📖', name: 'Reading', fmt: dur },
-        { re: new RegExp(NUM + '\\s*(min|mins|minutes?|h|hours?)\\b.*medit', 'i'), ico: '🧘', name: 'Meditate', fmt: dur },
-        { re: new RegExp('medit\\D*' + NUM + '\\s*(min|mins|minutes?|h|hours?)\\b', 'i'), ico: '🧘', name: 'Meditate', fmt: dur },
-        { re: new RegExp('slept\\D*' + NUM + '\\s*(h|hours?|hrs?)\\b', 'i'), ico: '🌙', name: 'Sleep', fmt: function (m) { return m[1] + ' h'; } },
-        { re: new RegExp(NUM + '\\s*(h|hours?|hrs?)\\s*(?:of\\s*)?sleep', 'i'), ico: '🌙', name: 'Sleep', fmt: function (m) { return m[1] + ' h'; } },
-        { re: new RegExp(NUM + '\\s*g\\b.*protein|protein\\D*' + NUM + '\\s*g', 'i'), ico: '🥩', name: 'Protein', fmt: function (m) { return (m[1] || m[2]) + ' g'; } },
-        { re: /(\d[\d,.]*)\s*steps/i, ico: '👟', name: 'Steps', fmt: function (m) { return m[1]; } }
-    ];
-    function dur(m) { return m[1] + (/^h/i.test(m[2]) ? ' h' : ' min'); }
+    // Understands the way people jot things down: an activity in any words, plus an amount in any order.
+    // "pickleball 1hr", "ran 1h30", "20 min violin", "3 glasses of water", "8k steps". The app uses Apple Intelligence.
+
+    // Activities: [pattern, name, emoji, kind]. kind "dist" means a bare "m" after a number is metres, not minutes.
+    var ACTIVITIES = [
+        ['table tennis|ping ?pong', 'Table tennis', '🏓'],
+        ['pi(?:ck|c|k)le ?ball', 'Pickleball', '🏓'],
+        ['walk(?:ed|ing)? the dog|dog walk', 'Dog walk', '🐕', 'dist'],
+        ['brush(?:ed)? (?:my )?teeth', 'Brush teeth', '🪥'],
+        ['american football', 'American football', '🏈'],
+        ['push ?-?ups?', 'Pushups', '💪'],
+        ['pull ?-?ups?|chin ?-?ups?', 'Pull-ups', '💪'],
+        ['sit ?-?ups?|crunch(?:es)?', 'Sit-ups', '💪'],
+        ['squats?', 'Squats', '🏋️'],
+        ['burpees?', 'Burpees', '🔥'],
+        ['planks?(?:ed|ing)?', 'Plank', '🧘'],
+        ['jump(?:ed|ing)? rope|skipping', 'Jump rope', '🪢'],
+        ['half marathon|marathon|ran|runs?|running|jog(?:ged|ging)?|sprints?', 'Running', '🏃', 'dist'],
+        ['walk(?:ed|ing|s)?|stroll', 'Walking', '🚶', 'dist'],
+        ['hik(?:e|ed|ing)', 'Hiking', '🥾', 'dist'],
+        ['swim(?:ming)?|swam|laps', 'Swimming', '🏊', 'dist'],
+        ['bik(?:e|ed|ing)|cycl(?:e|ed|ing)|rode|ride|spin(?:ning)? class|peloton', 'Cycling', '🚴', 'dist'],
+        ['rowed|rowing|rower|erg', 'Rowing', '🚣', 'dist'],
+        ['kayak(?:ed|ing)?|canoe(?:ing)?|paddl(?:e|ed|ing)', 'Paddling', '🛶', 'dist'],
+        ['padel', 'Padel', '🎾'],
+        ['tennis', 'Tennis', '🎾'],
+        ['badminton', 'Badminton', '🏸'],
+        ['squash', 'Squash', '🎾'],
+        ['basketball|hoops', 'Basketball', '🏀'],
+        ['soccer|football|futsal', 'Football', '⚽'],
+        ['volleyball', 'Volleyball', '🏐'],
+        ['baseball|softball', 'Baseball', '⚾'],
+        ['hockey', 'Hockey', '🏒'],
+        ['rugby', 'Rugby', '🏉'],
+        ['golf(?:ed|ing)?', 'Golf', '⛳'],
+        ['ski(?:ed|ing)?', 'Skiing', '⛷️'],
+        ['snowboard(?:ed|ing)?', 'Snowboarding', '🏂'],
+        ['surf(?:ed|ing)?', 'Surfing', '🏄'],
+        ['climb(?:ed|ing)?|boulder(?:ed|ing)?', 'Climbing', '🧗'],
+        ['skat(?:e|ed|ing)', 'Skating', '⛸️'],
+        ['box(?:ed|ing)?|kickboxing|sparr(?:ed|ing)', 'Boxing', '🥊'],
+        ['karate|judo|jiu ?jitsu|bjj|taekwondo|martial arts|mma', 'Martial arts', '🥋'],
+        ['horse ?-?riding|horseback|equestrian|dressage|show ?jumping|rode (?:my|the) horse', 'Horse riding', '🏇'],
+        ['salsa|bachata|tango|kizomba|swing dancing|hip ?hop|danc(?:e|ed|ing)|zumba|ballet', 'Dancing', '💃'],
+        ['archery', 'Archery', '🏹'],
+        ['fencing', 'Fencing', '🤺'],
+        ['gymnastics|trampoline|parkour|calisthenics', 'Gymnastics', '🤸'],
+        ['handball', 'Handball', '🤾'],
+        ['cricket', 'Cricket', '🏏'],
+        ['lacrosse', 'Lacrosse', '🥍'],
+        ['frisbee|ultimate', 'Frisbee', '🥏'],
+        ['sail(?:ed|ing)?', 'Sailing', '⛵'],
+        ['kite ?surf(?:ed|ing)?|wind ?surf(?:ed|ing)?|wing ?foil(?:ing)?', 'Kitesurfing', '🪁'],
+        ['scuba|div(?:e|ed|ing)|snorkel(?:ed|ing|ling)?|freediving', 'Diving', '🤿'],
+        ['fish(?:ed|ing)', 'Fishing', '🎣'],
+        ['chess', 'Chess', '♟️'],
+        ['triathlon|duathlon|brick', 'Triathlon', '🏅', 'dist'],
+        ['table ?top|board ?games?', 'Board games', '🎲'],
+        ['bowling', 'Bowling', '🎳'],
+        ['wrestl(?:e|ed|ing)', 'Wrestling', '🤼'],
+        ['ice skat(?:e|ed|ing)', 'Skating', '⛸️'],
+        ['yoga', 'Yoga', '🧘'],
+        ['pilates', 'Pilates', '🧘'],
+        ['stretch(?:ed|ing)?|mobility|foam roll(?:ed|ing)?', 'Stretching', '🤸'],
+        ['meditat(?:e|ed|ion|ing)|breathwork', 'Meditate', '🧘'],
+        ['gym|lift(?:ed|ing)?|weights|strength|workout|work(?:ed)? out|crossfit|hiit', 'Strength', '🏋️'],
+        ['violin|fiddle', 'Violin', '🎻'],
+        ['viola|cello|double bass', 'Strings', '🎻'],
+        ['piano|keyboard', 'Piano', '🎹'],
+        ['guitar|bass guitar|ukulele', 'Guitar', '🎸'],
+        ['drums?|drumming|percussion', 'Drums', '🥁'],
+        ['sax(?:ophone)?', 'Saxophone', '🎷'],
+        ['trumpet|trombone|horn|tuba', 'Brass', '🎺'],
+        ['flute|clarinet|oboe|bassoon', 'Woodwind', '🎶'],
+        ['sing(?:ing)?|sang|vocals?|choir', 'Singing', '🎤'],
+        ['practi[cs](?:e|ed|ing)', 'Practice', '🎵'],
+        ['read(?:ing)?|pages?|book', 'Reading', '📖'],
+        ['stud(?:y|ied|ying)|revis(?:e|ed|ion|ing)|homework', 'Study', '📚'],
+        ['journal(?:ed|ing)?|diary|writ(?:e|ing|ten)|wrote', 'Writing', '✍️'],
+        ['cod(?:e|ed|ing)|programm(?:ed|ing)', 'Coding', '💻'],
+        ['duolingo|spanish|french|german|italian|japanese|language', 'Language', '🗣️'],
+        ['draw(?:ing)?|drew|paint(?:ed|ing)?|sketch(?:ed|ing)?', 'Art', '🎨'],
+        ['cook(?:ed|ing)?|meal prep', 'Cooking', '🍳'],
+        ['clean(?:ed|ing)?|tid(?:y|ied)', 'Cleaning', '🧹'],
+        ['garden(?:ed|ing)?|plants?', 'Gardening', '🌱'],
+        ['water polo', 'Water polo', '🤽'],
+        ['water', 'Water', '💧'],
+        ['coffee|espresso', 'Coffee', '☕'],
+        ['tea', 'Tea', '🍵'],
+        ['alcohol|beers?|wine|drinks?', 'Drinks', '🍷'],
+        ['slept|sleep|nap(?:ped)?', 'Sleep', '🌙'],
+        ['steps', 'Steps', '👟'],
+        ['protein', 'Protein', '🥩'],
+        ['calories|kcal|cals?', 'Calories', '🔥'],
+        ['vitamins?|supplements?|creatine|pills?|meds?', 'Supplements', '💊'],
+        ['floss(?:ed|ing)?', 'Floss', '🦷'],
+        ['screen time|phone', 'Screen time', '📱'],
+        ['sauna', 'Sauna', '🧖'],
+        ['cold plunge|ice bath|cold shower', 'Cold plunge', '🧊']
+    ].map(function (a) { return { re: new RegExp('\\b(?:' + a[0] + ')\\b', 'i'), name: a[1], ico: a[2], dist: a[3] === 'dist' }; });
+
+    var N = '(\\d+(?:[.,]\\d+)?)';
+    function num(x) { return parseFloat(String(x).replace(',', '.')); }
+    function trim(n) { return String(Math.round(n * 100) / 100); }
+    function fmtMinutes(m) {
+        m = Math.round(m);
+        if (m < 60) return m + ' min';
+        var h = Math.floor(m / 60), r = m % 60;
+        return h + ' h' + (r ? ' ' + r + ' min' : '');
+    }
+
+    // Finds the amount in a phrase. Returns { text, unit } and the phrase with the amount removed.
+    function amount(part, act) {
+        var p = part, m;
+        // Durations: 1h30, 1 hr 15 min, 1.5 hours, an hour, half an hour, 45 min, 45m (for non-distance activities)
+        if ((m = p.match(new RegExp(N + '\\s*(?:h|hrs?|hours?)\\s*(?:and\\s*)?(\\d+)\\s*(?:m|mins?|minutes?)?\\b', 'i')))) return [fmtMinutes(num(m[1]) * 60 + num(m[2])), p.replace(m[0], ' ')];
+        if ((m = p.match(new RegExp(N + '\\s*(?:h|hrs?|hours?)\\b', 'i')))) return [fmtMinutes(num(m[1]) * 60), p.replace(m[0], ' ')];
+        if ((m = p.match(/\bhalf an? hour\b/i))) return ['30 min', p.replace(m[0], ' ')];
+        if ((m = p.match(/\ban? hour\b/i))) return ['1 h', p.replace(m[0], ' ')];
+        if ((m = p.match(new RegExp(N + '\\s*(?:mins?|minutes?)\\b', 'i')))) return [fmtMinutes(num(m[1])), p.replace(m[0], ' ')];
+        if ((m = p.match(new RegExp(N + '\\s*m\\b', 'i')))) {
+            if (act && act.dist && num(m[1]) >= 50) return [trim(num(m[1])) + ' m', p.replace(m[0], ' ')];
+            return [fmtMinutes(num(m[1])), p.replace(m[0], ' ')];
+        }
+        // Distances
+        if ((m = p.match(new RegExp(N + '\\s*(?:km|k|kilometers?|kilometres?)\\b', 'i'))) && !/steps/i.test(p)) return [trim(num(m[1])) + ' km', p.replace(m[0], ' ')];
+        if ((m = p.match(new RegExp(N + '\\s*(?:mi|miles?)\\b', 'i')))) return [trim(num(m[1])) + ' mi', p.replace(m[0], ' ')];
+        // Volumes
+        if ((m = p.match(new RegExp(N + '\\s*(?:l|liters?|litres?)\\b', 'i')))) return [trim(num(m[1])) + ' L', p.replace(m[0], ' ')];
+        if ((m = p.match(new RegExp(N + '\\s*ml\\b', 'i')))) return [trim(num(m[1])) + ' ml', p.replace(m[0], ' ')];
+        if ((m = p.match(new RegExp(N + '\\s*(glasses|glass|cups?|bottles?|shots?)\\b', 'i')))) return [trim(num(m[1])) + ' ' + m[2].toLowerCase(), p.replace(m[0], ' ')];
+        // Weight and energy
+        if ((m = p.match(new RegExp(N + '\\s*(?:g|grams?)\\b', 'i')))) return [trim(num(m[1])) + ' g', p.replace(m[0], ' ')];
+        if ((m = p.match(new RegExp(N + '\\s*(?:kcal|cals?|calories)\\b', 'i')))) return [trim(num(m[1])) + ' kcal', p.replace(m[0], ' ')];
+        // Steps written as 8k or 8,000
+        if ((m = p.match(/(\d+(?:[.,]\d+)?)\s*k\s*steps\b/i))) return [Math.round(num(m[1]) * 1000).toLocaleString('en-US') + ' steps', p.replace(m[0], ' steps ')];
+        if ((m = p.match(/(\d{1,3}(?:,\d{3})+|\d+)\s*steps\b/i))) return [parseInt(m[1].replace(/,/g, ''), 10).toLocaleString('en-US') + ' steps', p.replace(m[0], ' steps ')];
+        // Pages, reps, sets, times, or a plain number
+        if ((m = p.match(new RegExp(N + '\\s*(pages?|reps?|sets?|laps?|times?|x)\\b', 'i')))) {
+            var u = m[2].toLowerCase(); if (u === 'x') u = 'times';
+            return [trim(num(m[1])) + ' ' + u, p.replace(m[0], ' ')];
+        }
+        if ((m = p.match(new RegExp('(?:^|\\s)' + N + '(?=\\s|$)')))) return [trim(num(m[1])), p.replace(m[1], ' ')];
+        return [null, p];
+    }
+
+
+    // Typo tolerance: the correctly spelled words below, compared with what was typed.
+    var BY_NAME = {};
+    ACTIVITIES.forEach(function (a) { if (!BY_NAME[a.name]) BY_NAME[a.name] = a; });
+    var FUZZY = {
+        running: 'Running', jogging: 'Running', marathon: 'Running', walking: 'Walking', hiking: 'Hiking', swimming: 'Swimming',
+        cycling: 'Cycling', biking: 'Cycling', rowing: 'Rowing', tennis: 'Tennis', pickleball: 'Pickleball', padel: 'Padel',
+        badminton: 'Badminton', squash: 'Squash', basketball: 'Basketball', soccer: 'Football', football: 'Football',
+        volleyball: 'Volleyball', baseball: 'Baseball', softball: 'Baseball', hockey: 'Hockey', rugby: 'Rugby', golf: 'Golf',
+        skiing: 'Skiing', snowboarding: 'Snowboarding', surfing: 'Surfing', climbing: 'Climbing', bouldering: 'Climbing',
+        skating: 'Skating', boxing: 'Boxing', kickboxing: 'Boxing', karate: 'Martial arts', taekwondo: 'Martial arts',
+        dancing: 'Dancing', salsa: 'Dancing', bachata: 'Dancing', tango: 'Dancing', ballet: 'Dancing', zumba: 'Dancing',
+        horseriding: 'Horse riding', equestrian: 'Horse riding', archery: 'Archery', fencing: 'Fencing', gymnastics: 'Gymnastics',
+        handball: 'Handball', cricket: 'Cricket', lacrosse: 'Lacrosse', frisbee: 'Frisbee', sailing: 'Sailing',
+        kitesurfing: 'Kitesurfing', windsurfing: 'Kitesurfing', diving: 'Diving', snorkeling: 'Diving', snorkelling: 'Diving',
+        fishing: 'Fishing', chess: 'Chess', triathlon: 'Triathlon', bowling: 'Bowling', wrestling: 'Wrestling',
+        yoga: 'Yoga', pilates: 'Pilates', stretching: 'Stretching', meditation: 'Meditate', meditated: 'Meditate',
+        meditate: 'Meditate', strength: 'Strength', workout: 'Strength', crossfit: 'Strength', weights: 'Strength',
+        violin: 'Violin', cello: 'Strings', viola: 'Strings', piano: 'Piano', keyboard: 'Piano', guitar: 'Guitar',
+        ukulele: 'Guitar', drums: 'Drums', drumming: 'Drums', saxophone: 'Saxophone', trumpet: 'Brass', trombone: 'Brass',
+        flute: 'Woodwind', clarinet: 'Woodwind', singing: 'Singing', practice: 'Practice', reading: 'Reading',
+        studying: 'Study', studied: 'Study', homework: 'Study', journaling: 'Writing', writing: 'Writing', coding: 'Coding',
+        programming: 'Coding', duolingo: 'Language', drawing: 'Art', painting: 'Art', sketching: 'Art', cooking: 'Cooking',
+        cleaning: 'Cleaning', gardening: 'Gardening', water: 'Water', coffee: 'Coffee', slept: 'Sleep', sleep: 'Sleep',
+        steps: 'Steps', protein: 'Protein', calories: 'Calories', vitamins: 'Supplements', supplements: 'Supplements',
+        creatine: 'Supplements', flossing: 'Floss', floss: 'Floss', sauna: 'Sauna', pushups: 'Pushups', pullups: 'Pull-ups',
+        situps: 'Sit-ups', squats: 'Squats', burpees: 'Burpees', plank: 'Plank', planking: 'Plank'
+    };
+    var FUZZY_WORDS = Object.keys(FUZZY);
+
+    // Edit distance with swapped letters counting as one change ("gutiar" -> "guitar").
+    function distance(a, b) {
+        var d = [], i, j;
+        for (i = 0; i <= a.length; i++) { d[i] = [i]; }
+        for (j = 0; j <= b.length; j++) { d[0][j] = j; }
+        for (i = 1; i <= a.length; i++) {
+            for (j = 1; j <= b.length; j++) {
+                var cost = a[i - 1] === b[j - 1] ? 0 : 1;
+                d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
+                if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+            }
+        }
+        return d[a.length][b.length];
+    }
+
+    function fuzzyActivity(part) {
+        var words = part.toLowerCase().replace(/[^a-zà-ÿ ]/g, ' ').split(/\s+/).filter(function (w) { return w.length >= 4 && !FILLER_WORDS[w]; });
+        var candidates = words.slice();
+        for (var k = 0; k < words.length - 1; k++) candidates.push(words[k] + words[k + 1]); // "horse ridding" -> "horseridding"
+        var best = null, bestD = 99;
+        candidates.forEach(function (w) {
+            var allowed = w.length >= 8 ? 2 : 1;
+            FUZZY_WORDS.forEach(function (target) {
+                if (Math.abs(target.length - w.length) > allowed) return;
+                var dd = distance(w, target);
+                if (dd <= allowed && dd < bestD) { bestD = dd; best = target; }
+            });
+        });
+        return best ? BY_NAME[FUZZY[best]] : null;
+    }
+    var FILLER_WORDS = {};
+    'with this that then also just some about around hour hours mins minutes today morning evening night session played went have drank took'.split(' ').forEach(function (w) { FILLER_WORDS[w] = true; });
+
+    function parseOne(part) {
+        var bed = part.match(/\b(?:went to bed|bed ?time|in bed|asleep)\b\D*(\d{1,2})(?:[:.h](\d{2}))?\s*(am|pm)?/i);
+        if (bed) return { ico: '🌙', name: 'Bedtime', val: bed[1] + ':' + (bed[2] || '00') + (bed[3] ? ' ' + bed[3].toUpperCase() : '') };
+        var act = null;
+        for (var i = 0; i < ACTIVITIES.length; i++) if (ACTIVITIES[i].re.test(part)) { act = ACTIVITIES[i]; break; }
+        if (!act) act = fuzzyActivity(part);
+        var res = amount(part, act), val = res[0], rest = res[1];
+        // Amounts that imply an activity on their own
+        if (!act && val) {
+            if (/ L$| ml$| glass| cup| bottle/.test(val)) act = { name: 'Water', ico: '💧' };
+            else if (/ steps$/.test(val)) act = { name: 'Steps', ico: '👟' };
+            else if (/ kcal$/.test(val)) act = { name: 'Calories', ico: '🔥' };
+        }
+        if (act) {
+            if (act.name === 'Sleep' && val && /min/.test(val) === false && /^\d/.test(val) && !/ h/.test(val)) val = val + ' h';
+            if (act.name === 'Pushups' || act.name === 'Pull-ups' || act.name === 'Sit-ups' || act.name === 'Squats' || act.name === 'Burpees') {
+                if (val && /^\d+$/.test(val)) val = val + ' reps';
+            }
+            if (act.name === 'Steps' && val) val = val.replace(/ steps$/, '');
+            return { ico: act.ico, name: act.name, val: val || 'Done' };
+        }
+        // Unknown activity: name it after what was written, minus a leading "ate", "had", "did"... and trailing "for", "at"...
+        var name = rest.replace(/[^a-zA-ZÀ-ÿ' -]/g, ' ').replace(/\s+/g, ' ').trim()
+            .replace(/^(?:i\s+)?(?:ate|had|did|do|went|go|played|play|took|take|drank|made|finished)\s+(?:the\s+|a\s+|an\s+|some\s+|my\s+)?/i, '')
+            .replace(/(?:\s+(?:for|at|in|on|of|with|to|about|around))+$/i, '').trim();
+        if (!name) return null;
+        name = name.charAt(0).toUpperCase() + name.slice(1);
+        return { ico: '✅', name: name, val: val || 'Done' };
+    }
 
     function parse(text) {
-        return text.split(/\s*(?:,|;|\band\b|&|\+|\bthen\b)\s*/i)
+        // Keep "10,000" and a trailing "1 hr and 15 min" together before splitting on commas and "and"
+        text = text.replace(/(\d),(\d{3})\b/g, '$1$2');
+        text = text.replace(/(\d)\s*(h|hrs?|hours?)\s+and\s+(\d+\s*(?:m|mins?|minutes?))\s*(?=$|[,;\n])/gi, '$1$2 $3');
+        return text.split(/\s*(?:,|;|\n|\+|&|\band\b|\bthen\b|\balso\b|\bplus\b)\s*/i)
             .map(function (s) { return s.trim(); })
             .filter(Boolean)
-            .map(function (part) {
-                for (var r = 0; r < rules.length; r++) {
-                    var m = part.match(rules[r].re);
-                    if (m) return { ico: rules[r].ico, name: rules[r].name, val: rules[r].fmt(m) };
-                }
-                return { ico: '📝', name: part, val: 'Saved', note: true };
-            });
+            .map(parseOne)
+            .filter(Boolean);
     }
 
     var form = document.getElementById('say-form');
@@ -125,7 +342,7 @@
         logged.innerHTML = '';
         items.forEach(function (it, i) {
             var li = document.createElement('li');
-            li.className = 'log-row' + (it.note ? ' note' : '');
+            li.className = 'log-row';
             li.style.animationDelay = reduceMotion ? '0s' : (i * 0.12) + 's';
             var ico = document.createElement('span'); ico.className = 'ico'; ico.setAttribute('aria-hidden', 'true'); ico.textContent = it.ico;
             var name = document.createElement('span'); name.className = 'name'; name.textContent = it.name;
@@ -331,17 +548,28 @@
         { n: 'Baby spinach', ico: '🥬', lvl: 'some' },
         { n: 'Greek yogurt', ico: '🥛', lvl: 'some' },
         { n: 'Eggs', ico: '🥚', lvl: 'plenty' },
-        { n: 'Avocado', ico: '🥑', lvl: 'some' }
+        { n: 'Avocado', ico: '🥑', lvl: 'some' },
+        { n: 'Lemons', ico: '🍋', lvl: 'some' },
+        { n: 'Garlic', ico: '🧄', lvl: 'plenty' },
+        { n: 'Chickpeas', ico: '🫘', lvl: 'some' },
+        { n: 'Feta', ico: '🧀', lvl: 'some' },
+        { n: 'Cherry tomatoes', ico: '🍅', lvl: 'plenty' },
+        { n: 'Wraps', ico: '🫓', lvl: 'some' }
     ];
-    // Two sets of three ideas, all made only from the pantry above. "Show me others" flips between them.
+    // Three rounds of a fast, a medium, and a slow dinner, all made only from the pantry above.
+    var TIERS = { fast: '⚡ Fast', medium: '🍳 Medium', slow: '🍲 Slow' };
     var DINNER_SETS = [[
-        { t: 'Chicken, spinach & rice bowl', p: 42, min: 25, uses: ['Chicken breast', 'Basmati rice', 'Baby spinach', 'Avocado'] },
-        { t: 'Spinach scramble with yogurt on the side', p: 34, min: 15, uses: ['Eggs', 'Baby spinach', 'Greek yogurt'] },
-        { t: 'Chicken & avocado rice salad', p: 40, min: 20, uses: ['Chicken breast', 'Basmati rice', 'Avocado'] }
+        { tier: 'fast', t: 'Crispy egg & avocado wraps with blistered tomatoes', p: 28, min: 10, uses: ['Eggs', 'Avocado', 'Wraps', 'Cherry tomatoes'] },
+        { tier: 'medium', t: 'Lemon-garlic chicken over spinach rice', p: 46, min: 25, uses: ['Chicken breast', 'Basmati rice', 'Baby spinach', 'Lemons', 'Garlic'] },
+        { tier: 'slow', t: 'Chicken shawarma bowls with crispy chickpeas and garlic yogurt', p: 54, min: 45, uses: ['Chicken breast', 'Chickpeas', 'Greek yogurt', 'Garlic', 'Basmati rice', 'Cherry tomatoes'] }
     ], [
-        { t: 'Chicken with yogurt sauce & rice', p: 48, min: 30, uses: ['Chicken breast', 'Greek yogurt', 'Basmati rice'] },
-        { t: 'Egg fried rice with spinach', p: 26, min: 20, uses: ['Eggs', 'Basmati rice', 'Baby spinach'] },
-        { t: 'Avocado & egg rice bowl', p: 24, min: 15, uses: ['Basmati rice', 'Eggs', 'Avocado'] }
+        { tier: 'fast', t: 'Turkish eggs on garlic yogurt, warm wraps to dip', p: 30, min: 12, uses: ['Eggs', 'Greek yogurt', 'Garlic', 'Wraps'] },
+        { tier: 'medium', t: 'Chicken, chickpea & tomato tray bake with feta', p: 50, min: 30, uses: ['Chicken breast', 'Chickpeas', 'Cherry tomatoes', 'Feta', 'Lemons'] },
+        { tier: 'slow', t: 'Souvlaki skewers with tzatziki and lemon rice', p: 48, min: 50, uses: ['Chicken breast', 'Greek yogurt', 'Lemons', 'Garlic', 'Basmati rice'] }
+    ], [
+        { tier: 'fast', t: 'Spinach & feta scramble in a toasted wrap', p: 27, min: 8, uses: ['Eggs', 'Baby spinach', 'Feta', 'Wraps'] },
+        { tier: 'medium', t: 'Smashed chickpea & avocado salad with a jammy egg', p: 24, min: 20, uses: ['Chickpeas', 'Avocado', 'Eggs', 'Lemons', 'Cherry tomatoes'] },
+        { tier: 'slow', t: 'Garlic chicken fried rice with spinach and a crispy egg', p: 45, min: 40, uses: ['Chicken breast', 'Basmati rice', 'Eggs', 'Baby spinach', 'Garlic'] }
     ]];
     var dinnerSet = 0;
     var LEVEL_DOWN = { plenty: 'some', some: 'low', low: 'out', out: 'out' };
@@ -406,6 +634,7 @@
         DINNER_SETS[dinnerSet].forEach(function (d, i) {
             var card = document.createElement('div'); card.className = 'dinner';
             card.style.animationDelay = reduceMotion ? '0s' : (i * 0.1) + 's';
+            var tier = document.createElement('span'); tier.className = 'tier ' + d.tier; tier.textContent = TIERS[d.tier];
             var h = document.createElement('h4'); h.textContent = d.t;
             var meta = document.createElement('div'); meta.className = 'meta';
             meta.innerHTML = '<span>🥩 <b>' + d.p + ' g</b> protein</span><span>⏱ <b>' + d.min + '</b> min</span>';
@@ -414,7 +643,7 @@
             var cook = document.createElement('button'); cook.type = 'button'; cook.className = 'btn btn-primary btn-sm'; cook.textContent = 'Cooked it';
             cook.setAttribute('aria-label', 'Cooked it: ' + d.t);
             cook.addEventListener('click', function () { cooked(d); });
-            card.append(h, meta, cook);
+            card.append(tier, h, meta, cook);
             dinnerSlot.appendChild(card);
         });
         var more = document.createElement('button');
