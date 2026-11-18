@@ -72,7 +72,6 @@ h1, h2 { line-height: 1.15; letter-spacing: -0.02em; }
 .page { padding: 40px 0 80px; }
 .page h1 { font-size: clamp(2rem, 5vw, 2.75rem); margin: 0 0 8px; letter-spacing: -0.03em; }
 .page h2 { font-size: 1.375rem; margin: 40px 0 12px; }
-.page h3 { font-size: 1.0625rem; margin: 24px 0 8px; }
 .page ul { padding-left: 1.2em; }
 .page li { margin-bottom: 8px; }
 .meta { color: var(--muted); font-size: 0.9375rem; }
