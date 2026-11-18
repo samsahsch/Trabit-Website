@@ -21,6 +21,8 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Track any habit. Reach any goal. Trabit on iPhone.">
     <meta name="twitter:card" content="summary_large_image">
+    <!-- Smart App Banner. Replace APP_ID with the App Store ID before this goes live. -->
+    <meta name="apple-itunes-app" content="app-id=APP_ID">
     <script>
         document.documentElement.classList.add('js');
         try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
@@ -59,13 +61,14 @@
                     <p class="lede">Your own personal coach, right at your fingertips.</p>
                     <p class="sub">Habits, sleep, food, and training in one app. The coach sees the whole picture and plans around your week.</p>
                     <div class="actions">
-                        <a class="btn btn-primary" href="https://testflight.apple.com/join/5uVBSwkq">
+                        <!-- Replace APP_ID with the App Store ID before this goes live. -->
+                        <a class="btn btn-primary" href="https://apps.apple.com/app/idAPP_ID">
                             <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.77-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.65zM14.1 5.84c.63-.77 1.06-1.84.94-2.9-.91.04-2.01.61-2.66 1.37-.58.67-1.09 1.76-.96 2.8 1.02.08 2.05-.51 2.68-1.27z"/></svg>
-                            Join the beta
+                            Download on the App Store
                         </a>
                         <a class="btn btn-ghost" href="#say">Try it here</a>
                     </div>
-                    <p class="note">Free on TestFlight. iPhone, Apple Watch, and iPad.</p>
+                    <p class="note">Free, with no ads or subscriptions. iPhone, Apple Watch, and iPad.</p>
                 </div>
 
                 <div class="phone-stage">
@@ -120,7 +123,7 @@
             <div class="wrap say">
                 <div class="section-head reveal">
                     <h2 id="say-title">Just <span class="grad">say it.</span></h2>
-                    <p>Type like you'd text a friend. Trabit figures out what goes where. From the app, a widget, Siri, your Watch, or straight from a notification.</p>
+                    <p>Type like you'd text a friend. Trabit figures out what goes where. In the app, on your Watch, in a notification reply, or from the Share sheet. Or just say "Tell Trabit" to Siri.</p>
                 </div>
                 <div class="glass say-box reveal">
                     <form class="say-form" id="say-form" autocomplete="off">
@@ -193,7 +196,7 @@
             <div class="wrap">
                 <div class="section-head reveal">
                     <h2 id="food-title">From your receipt<br><span class="grad">to tonight's dinner.</span></h2>
-                    <p>Scan your groceries once. Every evening you get a fast, a medium, and a slow dinner made from what's in your kitchen, sized to what your body needs today.</p>
+                    <p>Scan your groceries once. Every evening you get up to three dinner ideas made from what's in your kitchen, sized to the protein you still need today.</p>
                 </div>
                 <div class="kitchen">
                     <div class="glass panel reveal">
@@ -277,29 +280,29 @@
                     <div class="qcol">
                         <details class="glass q reveal">
                             <summary>How long does it really take to form a habit?</summary>
-                            <p>About 66 days on average, not the 21 you often hear. In the study it ranged from 18 to 254 days. <span class="cite">Lally et al., 2010</span></p>
+                            <p>In one study, a daily habit took a median of 66 days to feel automatic, not the 21 you often hear. From person to person it ranged from 18 to an estimated 254 days. <span class="cite">Lally et al., 2010</span></p>
                         </details>
                         <details class="glass q reveal">
                             <summary>Does missing one day ruin a new habit?</summary>
-                            <p>No. A single missed day barely made a difference. That's why Trabit streaks forgive one off day, but not two in a row. <span class="cite">Lally et al., 2010</span></p>
+                            <p>No. In the same study, missing a single chance to do the habit didn't really slow it down. That's why Trabit streaks forgive one off day, but not two in a row. <span class="cite">Lally et al., 2010</span></p>
                         </details>
                         <details class="glass q reveal">
-                            <summary>Why does environment beat willpower?</summary>
-                            <p>Around 43% of what you do each day runs on autopilot, cued by the same time and place. Change the cue and the habit follows. <span class="cite">Wood, Quinn &amp; Kashy, 2002</span></p>
+                            <summary>Why do routines run on autopilot?</summary>
+                            <p>In two diary studies, between a third and a half of everyday actions were done almost daily in the same place, often while people were thinking about something else. A stable setting cues the habit, so it takes little thought. <span class="cite">Wood, Quinn &amp; Kashy, 2002</span></p>
                         </details>
                     </div>
                     <div class="qcol">
                         <details class="glass q reveal">
                             <summary>Can one habit carry another?</summary>
-                            <p>Yes. Tie a new habit to one you already have, like "after coffee, I stretch", and you're much more likely to follow through. <span class="cite">Gollwitzer &amp; Sheeran, 2006</span></p>
+                            <p>It can help. An if-then plan, like "after coffee, I stretch", ties a new habit to a cue you already have. Across 94 studies, plans like this had a medium-to-large effect on reaching goals. <span class="cite">Gollwitzer &amp; Sheeran, 2006</span></p>
                         </details>
                         <details class="glass q reveal">
                             <summary>Does tracking actually help?</summary>
-                            <p>Yes. Across 138 studies, keeping an eye on your progress was one of the most reliable ways to change behavior. <span class="cite">Harkin et al., 2016</span></p>
+                            <p>Yes. Across 138 experiments, getting people to check their progress helped them reach their goals, and it helped more when progress was written down or shared. <span class="cite">Harkin et al., 2016</span></p>
                         </details>
                         <details class="glass q reveal">
                             <summary>Why do Mondays feel like a fresh start?</summary>
-                            <p>New weeks, months, and birthdays make people more likely to start working on goals. Use them. <span class="cite">Dai, Milkman &amp; Riis, 2014</span></p>
+                            <p>Gym visits, searches for "diet", and new goal commitments all rose after fresh starts, such as a new week, month, or year, a birthday, or a holiday. Use them. <span class="cite">Dai, Milkman &amp; Riis, 2014</span></p>
                         </details>
                     </div>
                 </div>
@@ -336,12 +339,13 @@
                     <div class="glass tile goal-tile reveal">
                         <h3>Goals with a finish line.</h3>
                         <div class="countdown">
-                            <div class="cal" aria-hidden="true"><i id="cal-month">OCT</i><b id="cal-day">25</b></div>
+                            <div class="cal" aria-hidden="true"><i id="cal-month">RACE</i><b id="cal-day">🏁</b></div>
                             <div>
                                 <div class="days"><span id="days-left">30</span> <small>days left</small></div>
-                                <div class="target"><strong>Coastal half marathon</strong><br><span id="target-date">Oct 25, 2026</span></div>
+                                <div class="target"><strong>Coastal half marathon</strong><br><span id="target-date">30 days from today</span></div>
                             </div>
                         </div>
+                        <p style="margin-top:14px">Get goals suggested from your last four weeks, and a banner when you finish one.</p>
                     </div>
                     <div class="glass tile span-2 reveal">
                         <h3>Compete with your crew. <span class="badge">GROUP</span></h3>
@@ -354,7 +358,7 @@
                     </div>
                     <div class="glass tile span-2 reveal">
                         <h3>Wherever you are.</h3>
-                        <p>Log without opening the app, and keep Apple Health in sync both ways.</p>
+                        <p>Tick a habit off from a widget or your Watch. Say "Log 100 pushups on Trabit", or ask Siri how you slept. Steps, workouts, and sleep come in from Apple Health.</p>
                         <div class="pills">
                             <span>iPhone</span><span>Apple Watch</span><span>iPad</span><span>Widgets</span><span>Live Activities</span><span>Siri</span><span>Apple Health</span>
                         </div>
@@ -362,7 +366,7 @@
                     <div class="glass tile reveal">
                         <span class="emoji" aria-hidden="true">🏆</span>
                         <h3>50 badges to earn.</h3>
-                        <p>From First Step to Centurion, your 100-day streak. Little wins along the way.</p>
+                        <p>From First Step to Centurion, your 100-day streak. A banner tells you the moment you earn one.</p>
                     </div>
                 </div>
             </div>
@@ -375,12 +379,12 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
                 </div>
                 <h2 id="privacy-title">Private by design.</h2>
-                <p>Your data lives on your device and in your iCloud. The coach runs on Apple Intelligence, on your device or in Apple's Private Cloud Compute.</p>
+                <p>Your data lives on your device. Only what you share with friends goes to iCloud. The coach runs on Apple Intelligence, on your device or in Apple's Private Cloud Compute, unless you connect your own AI account and choose what it sees.</p>
                 <ul class="facts">
                     <li>No Trabit servers</li>
                     <li>No ads</li>
                     <li>No tracking</li>
-                    <li>No third-party AI</li>
+                    <li>Apple AI, unless you add your own</li>
                 </ul>
             </div>
         </section>
@@ -389,8 +393,10 @@
             <div class="wrap reveal">
                 <img class="icon" src="logos/apple-touch-icon.png" alt="" width="96" height="96" loading="lazy">
                 <h2 id="cta-title">Ready when you are.</h2>
-                <p class="muted">Join the beta. Free on TestFlight.</p>
-                <a class="btn btn-primary" href="https://testflight.apple.com/join/5uVBSwkq">Join the beta</a>
+                <p class="muted">Free on the App Store. No ads, no purchases, no subscriptions.</p>
+                <!-- Replace APP_ID with the App Store ID before this goes live. -->
+                <a class="btn btn-primary" href="https://apps.apple.com/app/idAPP_ID">Download on the App Store</a>
+                <p class="fine" style="margin-top:18px">Want new features early? <a href="https://testflight.apple.com/join/5uVBSwkq">Join the beta on TestFlight</a>.</p>
             </div>
         </section>
     </main>
