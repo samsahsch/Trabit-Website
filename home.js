@@ -556,20 +556,19 @@
         { n: 'Cherry tomatoes', ico: '🍅', lvl: 'plenty' },
         { n: 'Wraps', ico: '🫓', lvl: 'some' }
     ];
-    // Three rounds of a fast, a medium, and a slow dinner, all made only from the pantry above.
-    var TIERS = { fast: '⚡ Fast', medium: '🍳 Medium', slow: '🍲 Slow' };
+    // Three rounds of up to three dinner ideas (the app shows one to three), all made only from the pantry above.
     var DINNER_SETS = [[
-        { tier: 'fast', t: 'Crispy egg & avocado wraps with blistered tomatoes', p: 28, min: 10, uses: ['Eggs', 'Avocado', 'Wraps', 'Cherry tomatoes'] },
-        { tier: 'medium', t: 'Lemon-garlic chicken over spinach rice', p: 46, min: 25, uses: ['Chicken breast', 'Basmati rice', 'Baby spinach', 'Lemons', 'Garlic'] },
-        { tier: 'slow', t: 'Chicken shawarma bowls with crispy chickpeas and garlic yogurt', p: 54, min: 45, uses: ['Chicken breast', 'Chickpeas', 'Greek yogurt', 'Garlic', 'Basmati rice', 'Cherry tomatoes'] }
+        { t: 'Crispy egg & avocado wraps with blistered tomatoes', p: 28, min: 10, uses: ['Eggs', 'Avocado', 'Wraps', 'Cherry tomatoes'] },
+        { t: 'Lemon-garlic chicken over spinach rice', p: 46, min: 25, uses: ['Chicken breast', 'Basmati rice', 'Baby spinach', 'Lemons', 'Garlic'] },
+        { t: 'Chicken shawarma bowls with crispy chickpeas and garlic yogurt', p: 54, min: 45, uses: ['Chicken breast', 'Chickpeas', 'Greek yogurt', 'Garlic', 'Basmati rice', 'Cherry tomatoes'] }
     ], [
-        { tier: 'fast', t: 'Turkish eggs on garlic yogurt, warm wraps to dip', p: 30, min: 12, uses: ['Eggs', 'Greek yogurt', 'Garlic', 'Wraps'] },
-        { tier: 'medium', t: 'Chicken, chickpea & tomato tray bake with feta', p: 50, min: 30, uses: ['Chicken breast', 'Chickpeas', 'Cherry tomatoes', 'Feta', 'Lemons'] },
-        { tier: 'slow', t: 'Souvlaki skewers with tzatziki and lemon rice', p: 48, min: 50, uses: ['Chicken breast', 'Greek yogurt', 'Lemons', 'Garlic', 'Basmati rice'] }
+        { t: 'Turkish eggs on garlic yogurt, warm wraps to dip', p: 30, min: 12, uses: ['Eggs', 'Greek yogurt', 'Garlic', 'Wraps'] },
+        { t: 'Chicken, chickpea & tomato tray bake with feta', p: 50, min: 30, uses: ['Chicken breast', 'Chickpeas', 'Cherry tomatoes', 'Feta', 'Lemons'] },
+        { t: 'Souvlaki skewers with tzatziki and lemon rice', p: 48, min: 50, uses: ['Chicken breast', 'Greek yogurt', 'Lemons', 'Garlic', 'Basmati rice'] }
     ], [
-        { tier: 'fast', t: 'Spinach & feta scramble in a toasted wrap', p: 27, min: 8, uses: ['Eggs', 'Baby spinach', 'Feta', 'Wraps'] },
-        { tier: 'medium', t: 'Smashed chickpea & avocado salad with a jammy egg', p: 24, min: 20, uses: ['Chickpeas', 'Avocado', 'Eggs', 'Lemons', 'Cherry tomatoes'] },
-        { tier: 'slow', t: 'Garlic chicken fried rice with spinach and a crispy egg', p: 45, min: 40, uses: ['Chicken breast', 'Basmati rice', 'Eggs', 'Baby spinach', 'Garlic'] }
+        { t: 'Spinach & feta scramble in a toasted wrap', p: 27, min: 8, uses: ['Eggs', 'Baby spinach', 'Feta', 'Wraps'] },
+        { t: 'Smashed chickpea & avocado salad with a jammy egg', p: 24, min: 20, uses: ['Chickpeas', 'Avocado', 'Eggs', 'Lemons', 'Cherry tomatoes'] },
+        { t: 'Garlic chicken fried rice with spinach and a crispy egg', p: 45, min: 40, uses: ['Chicken breast', 'Basmati rice', 'Eggs', 'Baby spinach', 'Garlic'] }
     ]];
     var dinnerSet = 0;
     var LEVEL_DOWN = { plenty: 'some', some: 'low', low: 'out', out: 'out' };
@@ -634,7 +633,6 @@
         DINNER_SETS[dinnerSet].forEach(function (d, i) {
             var card = document.createElement('div'); card.className = 'dinner';
             card.style.animationDelay = reduceMotion ? '0s' : (i * 0.1) + 's';
-            var tier = document.createElement('span'); tier.className = 'tier ' + d.tier; tier.textContent = TIERS[d.tier];
             var h = document.createElement('h4'); h.textContent = d.t;
             var meta = document.createElement('div'); meta.className = 'meta';
             meta.innerHTML = '<span>🥩 <b>' + d.p + ' g</b> protein</span><span>⏱ <b>' + d.min + '</b> min</span>';
@@ -643,7 +641,7 @@
             var cook = document.createElement('button'); cook.type = 'button'; cook.className = 'btn btn-primary btn-sm'; cook.textContent = 'Cooked it';
             cook.setAttribute('aria-label', 'Cooked it: ' + d.t);
             cook.addEventListener('click', function () { cooked(d); });
-            card.append(tier, h, meta, cook);
+            card.append(h, meta, cook);
             dinnerSlot.appendChild(card);
         });
         var more = document.createElement('button');
